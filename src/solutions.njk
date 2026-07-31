@@ -1,0 +1,73 @@
+---
+layout: base.njk
+title: 핵심 솔루션
+---
+<section class="gradient-hero grid-overlay relative pt-20 pb-16 md:pt-24 md:pb-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+    <p class="text-sm font-bold text-techblue-300 tracking-wider mb-3">{{ solutions.eyebrow }}</p>
+    <h1 class="text-2xl md:text-4xl font-extrabold text-white leading-snug max-w-2xl mx-auto">{{ solutions.title }}</h1>
+    <p class="mt-4 text-slate-400 max-w-2xl mx-auto">{{ solutions.subtitle }}</p>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
+    {% for item in solutions.items %}
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
+      <div class="lg:col-span-5 {{ 'lg:order-2' if loop.index is even }}">
+        <div class="w-14 h-14 rounded-xl bg-techblue-500/10 flex items-center justify-center mb-6">
+          {% if item.icon == "bolt" %}
+          <svg class="w-7 h-7 text-techblue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          {% elif item.icon == "database" %}
+          <svg class="w-7 h-7 text-techblue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 1.657 3.582 3 8 3s8-1.343 8-3V7M4 7c0 1.657 3.582 3 8 3s8-1.343 8-3M4 7c0-1.657 3.582-3 8-3s8 1.343 8 3m0 5c0 1.657-3.582 3-8 3s-8-1.343-8-3"/></svg>
+          {% else %}
+          <svg class="w-7 h-7 text-techblue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4M16 17H4m0 0l4 4m-4-4l4-4"/></svg>
+          {% endif %}
+        </div>
+        <span class="text-xs font-bold text-techblue-500 tracking-wider">TECH 0{{ loop.index }}</span>
+        <h2 class="text-xl md:text-2xl font-bold text-navy-900 mt-2 mb-3">{{ item.title }}</h2>
+        <p class="text-sm text-slate-500 mb-4">{{ item.summary }}</p>
+        <p class="text-sm text-slate-600 leading-relaxed">{{ item.detail }}</p>
+      </div>
+      <div class="lg:col-span-7 {{ 'lg:order-1' if loop.index is even }}">
+        <div class="bg-navy-950 rounded-2xl p-8 h-full">
+          <p class="text-xs font-bold text-techblue-300 tracking-wider mb-5">주요 기능</p>
+          <ul class="space-y-4">
+            {% for f in item.features %}
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-techblue-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm text-slate-300">{{ f }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-navy-950 relative overflow-hidden">
+  <div class="absolute inset-0 grid-overlay opacity-40"></div>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <p class="text-sm font-bold text-techblue-300 tracking-wider mb-3 text-center">{{ solutions.process_title | upper }}</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+      {% for p in solutions.process %}
+      <div class="bg-navy-900/60 border border-white/10 rounded-2xl p-6">
+        <p class="text-3xl font-extrabold text-techblue-400 mb-3">{{ p.step }}</p>
+        <p class="font-bold text-white mb-2">{{ p.title }}</p>
+        <p class="text-sm text-slate-400 leading-relaxed">{{ p.desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-20 bg-white text-center">
+  <div class="max-w-2xl mx-auto px-6 lg:px-8">
+    <h2 class="text-xl md:text-2xl font-bold text-navy-900 mb-4">우리 설비에 어떻게 적용할 수 있을지 궁금하신가요?</h2>
+    <a href="/contact/" class="inline-flex items-center justify-center gap-2 bg-techblue-500 hover:bg-techblue-400 text-white font-semibold px-8 py-3.5 rounded-lg shadow-lg shadow-techblue-500/20 transition-colors">
+      전문 컨설턴트에게 문의하기
+    </a>
+  </div>
+</section>

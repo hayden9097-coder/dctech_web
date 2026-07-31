@@ -1,0 +1,167 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+locale: "ko"
+
+collections:
+  - name: "settings"
+    label: "사이트 설정"
+    files:
+      - file: "src/_data/site.json"
+        label: "회사 정보"
+        name: "site"
+        fields:
+          - { label: "회사명(국문)", name: "company_name_kr", widget: "string" }
+          - { label: "회사명(영문)", name: "company_name_en", widget: "string" }
+          - { label: "로고 이미지", name: "logo", widget: "image" }
+          - { label: "파비콘 이미지", name: "favicon", widget: "image" }
+          - { label: "메타 설명(검색엔진 노출용)", name: "meta_description", widget: "text" }
+          - { label: "주소", name: "address", widget: "string" }
+          - { label: "전화번호 1", name: "phone", widget: "string" }
+          - { label: "전화번호 2", name: "phone2", widget: "string" }
+          - { label: "이메일", name: "email", widget: "string" }
+          - { label: "저작권 연도", name: "copyright_year", widget: "string" }
+
+  - name: "home"
+    label: "홈 페이지"
+    files:
+      - file: "src/_data/home.json"
+        label: "홈 콘텐츠"
+        name: "home"
+        fields:
+          - { label: "상단 배지 텍스트", name: "hero_badge", widget: "string" }
+          - { label: "메인 타이틀 1줄", name: "hero_title_line1", widget: "string" }
+          - { label: "메인 타이틀 2줄 (강조색)", name: "hero_title_line2", widget: "string" }
+          - { label: "서브 카피", name: "hero_subtitle", widget: "text" }
+          - { label: "메인 버튼 텍스트", name: "cta_primary_label", widget: "string" }
+          - { label: "메인 버튼 링크", name: "cta_primary_url", widget: "string" }
+          - { label: "서브 버튼 텍스트", name: "cta_secondary_label", widget: "string" }
+          - { label: "서브 버튼 링크", name: "cta_secondary_url", widget: "string" }
+          - label: "통계 지표"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "수치", name: "value", widget: "string" }
+              - { label: "단위/기호", name: "suffix", widget: "string" }
+              - { label: "설명", name: "label", widget: "string" }
+          - { label: "소개 제목", name: "intro_title", widget: "string" }
+          - { label: "소개 본문", name: "intro_body", widget: "text" }
+          - label: "하이라이트 카드 (3개)"
+            name: "highlight_cards"
+            widget: "list"
+            fields:
+              - { label: "아이콘", name: "icon", widget: "select", options: ["about", "solutions", "cases"] }
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "설명", name: "desc", widget: "text" }
+              - { label: "링크 텍스트", name: "link_label", widget: "string" }
+              - { label: "링크 URL", name: "link_url", widget: "string" }
+          - { label: "CTA 배너 제목", name: "cta_banner_title", widget: "string" }
+          - { label: "CTA 배너 설명", name: "cta_banner_desc", widget: "text" }
+          - { label: "CTA 배너 버튼 텍스트", name: "cta_banner_button", widget: "string" }
+
+  - name: "about"
+    label: "회사소개 페이지"
+    files:
+      - file: "src/_data/about.json"
+        label: "회사소개 콘텐츠"
+        name: "about"
+        fields:
+          - { label: "상단 라벨", name: "eyebrow", widget: "string" }
+          - { label: "타이틀", name: "title", widget: "string" }
+          - { label: "소개 본문", name: "intro", widget: "text" }
+          - { label: "비전 인용구", name: "quote", widget: "text" }
+          - { label: "인용 출처", name: "quote_source", widget: "string" }
+          - { label: "핵심가치 섹션 제목", name: "values_title", widget: "string" }
+          - label: "핵심가치 목록"
+            name: "values"
+            widget: "list"
+            fields:
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "설명", name: "desc", widget: "text" }
+          - { label: "연혁 섹션 제목", name: "history_title", widget: "string" }
+          - label: "연혁 목록"
+            name: "history"
+            widget: "list"
+            fields:
+              - { label: "날짜", name: "date", widget: "string" }
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "설명", name: "desc", widget: "text" }
+
+  - name: "solutions"
+    label: "솔루션 페이지"
+    files:
+      - file: "src/_data/solutions.json"
+        label: "솔루션 콘텐츠"
+        name: "solutions"
+        fields:
+          - { label: "상단 라벨", name: "eyebrow", widget: "string" }
+          - { label: "타이틀", name: "title", widget: "string" }
+          - { label: "서브 타이틀", name: "subtitle", widget: "text" }
+          - label: "핵심 기술 카드 (3개)"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "아이콘", name: "icon", widget: "select", options: ["bolt", "database", "swap"] }
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "한줄 요약", name: "summary", widget: "string" }
+              - { label: "상세 설명", name: "detail", widget: "text" }
+              - label: "주요 기능 목록"
+                name: "features"
+                widget: "list"
+          - { label: "프로세스 섹션 제목", name: "process_title", widget: "string" }
+          - label: "진단 프로세스 (4단계)"
+            name: "process"
+            widget: "list"
+            fields:
+              - { label: "단계 번호", name: "step", widget: "string" }
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "설명", name: "desc", widget: "text" }
+
+  - name: "contact"
+    label: "문의 페이지"
+    files:
+      - file: "src/_data/contact.json"
+        label: "문의 콘텐츠"
+        name: "contact"
+        fields:
+          - { label: "상단 라벨", name: "eyebrow", widget: "string" }
+          - { label: "타이틀", name: "title", widget: "string" }
+          - { label: "소개문", name: "intro", widget: "text" }
+          - { label: "개인정보 동의 문구", name: "privacy_note", widget: "text" }
+          - { label: "제출 버튼 텍스트", name: "submit_label", widget: "string" }
+          - { label: "FAQ 섹션 제목", name: "faq_title", widget: "string" }
+          - label: "자주 묻는 질문"
+            name: "faq"
+            widget: "list"
+            fields:
+              - { label: "질문", name: "q", widget: "string" }
+              - { label: "답변", name: "a", widget: "text" }
+
+  - name: "cases"
+    label: "도입 사례"
+    folder: "src/cases"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "레이아웃", name: "layout", widget: "hidden", default: "case.njk" }
+      - { label: "제목", name: "title", widget: "string" }
+      - { label: "태그 (예: CASE 03 · 정수 처리장)", name: "tag", widget: "string" }
+      - { label: "정렬 순서(숫자가 작을수록 먼저 표시)", name: "order", widget: "number", default: 1 }
+      - { label: "한줄 요약", name: "summary", widget: "string" }
+      - label: "도입 전 지표 (최대 2개 권장)"
+        name: "before"
+        widget: "list"
+        fields:
+          - { label: "항목명", name: "label", widget: "string" }
+          - { label: "값", name: "value", widget: "string" }
+      - label: "도입 후 지표 (최대 2개 권장)"
+        name: "after"
+        widget: "list"
+        fields:
+          - { label: "항목명", name: "label", widget: "string" }
+          - { label: "값", name: "value", widget: "string" }
+      - { label: "본문 내용 (도입 배경/과제/접근/결과)", name: "body", widget: "markdown" }

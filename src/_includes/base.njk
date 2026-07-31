@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }} | {{ site.company_name_en }} ({{ site.company_name_kr }})</title>
+<meta name="description" content="{{ description or site.meta_description }}">
+<link rel="icon" type="image/png" href="{{ site.favicon or site.logo }}">
+<link rel="apple-touch-icon" href="{{ site.favicon or site.logo }}">
+<script src="https://cdn.tailwindcss.com?plugins=typography,forms"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: { 950: '#050b18', 900: '#0a1730', 800: '#0f2247', 700: '#153161' },
+          techblue: { 500: '#2f7dfa', 400: '#5b9bff', 300: '#8ec0ff' }
+        },
+        fontFamily: { sans: ['"Pretendard"', '"Noto Sans KR"', 'system-ui', 'sans-serif'] }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  .gradient-hero {
+    background: radial-gradient(1200px 600px at 80% -10%, rgba(47,125,250,0.25), transparent 60%),
+                linear-gradient(180deg, #050b18 0%, #0a1730 60%, #0f2247 100%);
+  }
+  .grid-overlay {
+    background-image: linear-gradient(rgba(94,163,255,0.06) 1px, transparent 1px),
+                       linear-gradient(90deg, rgba(94,163,255,0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .card-hover { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -12px rgba(15,34,71,0.35); border-color: rgba(47,125,250,0.5); }
+  .num-badge { font-variant-numeric: tabular-nums; }
+  .page-hero {
+    background: linear-gradient(180deg, #0a1730 0%, #0f2247 100%);
+  }
+</style>
+</head>
+<body class="bg-white text-navy-900 antialiased">
+
+<header class="fixed top-0 inset-x-0 z-50 bg-navy-950/90 backdrop-blur border-b border-white/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center">
+      <span class="bg-white rounded-md px-3 py-1.5 flex items-center">
+        <img src="{{ site.logo }}" alt="{{ site.company_name_en }} {{ site.company_name_kr }}" class="h-6 md:h-7 w-auto">
+      </span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+      <a href="/about/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if page.url == '/about/' }}">회사소개</a>
+      <a href="/solutions/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if page.url == '/solutions/' }}">핵심 솔루션</a>
+      <a href="/cases/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if (page.url == '/cases/' or '/cases/' in page.url) }}">도입 사례</a>
+      <a href="/contact/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if page.url == '/contact/' }}">문의</a>
+    </nav>
+    <a href="/contact/" class="hidden md:inline-flex items-center gap-1.5 bg-techblue-500 hover:bg-techblue-400 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
+      도입 문의
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <button id="mobileMenuBtn" class="md:hidden text-white p-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden bg-navy-950 border-t border-white/10 px-6 py-4 space-y-3">
+    <a href="/about/" class="block text-slate-300 hover:text-techblue-300">회사소개</a>
+    <a href="/solutions/" class="block text-slate-300 hover:text-techblue-300">핵심 솔루션</a>
+    <a href="/cases/" class="block text-slate-300 hover:text-techblue-300">도입 사례</a>
+    <a href="/contact/" class="block bg-techblue-500 text-white text-center font-semibold px-4 py-2 rounded-lg mt-2">문의하기</a>
+  </div>
+</header>
+
+<main class="pt-16">
+  {{ content | safe }}
+</main>
+
+<footer class="bg-navy-950 border-t border-white/5 py-12">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-between gap-8">
+      <div class="max-w-sm">
+        <div class="mb-4">
+          <span class="inline-flex bg-white rounded-md px-3 py-1.5">
+            <img src="{{ site.logo }}" alt="{{ site.company_name_en }} {{ site.company_name_kr }}" class="h-6 w-auto">
+          </span>
+        </div>
+        <p class="text-xs text-slate-500 leading-relaxed">
+          {{ site.address }}<br>
+          TEL. {{ site.phone }} &nbsp;|&nbsp; {{ site.phone2 }}<br>
+          {{ site.email }}
+        </p>
+      </div>
+      <div class="flex gap-16 text-sm">
+        <div>
+          <p class="text-white font-semibold mb-3">사이트맵</p>
+          <ul class="space-y-2 text-slate-500">
+            <li><a href="/about/" class="hover:text-techblue-300 transition-colors">회사소개</a></li>
+            <li><a href="/solutions/" class="hover:text-techblue-300 transition-colors">핵심 솔루션</a></li>
+            <li><a href="/cases/" class="hover:text-techblue-300 transition-colors">도입 사례</a></li>
+            <li><a href="/contact/" class="hover:text-techblue-300 transition-colors">문의하기</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-white/5 text-xs text-slate-600 flex flex-col sm:flex-row justify-between gap-2">
+      <p>Copyright &copy; {{ site.copyright_year }} · {{ site.company_name_en }}</p>
+      <p class="flex gap-4">
+        <a href="#" class="hover:text-slate-400">개인정보처리방침</a>
+        <a href="#" class="hover:text-slate-400">이용약관</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+  document.querySelectorAll('#mobileMenu a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.add('hidden');
+    });
+  });
+</script>
+
+</body>
+</html>
