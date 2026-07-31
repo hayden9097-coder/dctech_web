@@ -24,16 +24,52 @@ http://localhost:8080 에서 확인할 수 있습니다.
 
 ## 배포 및 관리자 페이지 활성화
 
-관리자 페이지(`/admin/`)는 배포 후에 동작합니다. 다음 순서로 1회 설정이 필요합니다.
+관리자 페이지(`/admin/`)는 **GitHub 계정으로 로그인**하는 방식입니다.
+배포 후 아래 1회 설정이 필요합니다.
 
-1. 이 폴더를 GitHub 저장소에 올립니다 (브랜치명 `main`).
-2. [Netlify](https://app.netlify.com)에서 해당 저장소를 연결해 배포합니다.
-   빌드 설정은 `netlify.toml`에 이미 정의되어 있습니다.
-3. Netlify 사이트 설정에서 **Identity** 기능을 켭니다.
-4. Identity > Services에서 **Git Gateway**를 켭니다.
-5. Identity > Invite users로 편집할 담당자의 이메일을 초대합니다.
+### 1. Netlify에 배포
 
-설정이 끝나면 `https://사이트주소/admin/` 으로 접속해 로그인 후 콘텐츠를 편집할 수 있습니다.
+[Netlify](https://app.netlify.com)에서 `dctech_web` 저장소를 연결해 배포합니다.
+빌드 설정(`npm run build` → `dist`)은 `netlify.toml`에 이미 정의되어 있습니다.
+
+### 2. GitHub OAuth App 생성
+
+GitHub > Settings > Developer settings > **OAuth Apps** > New OAuth App
+
+| 항목 | 값 |
+|---|---|
+| Application name | DCTech CMS (자유롭게) |
+| Homepage URL | 배포된 사이트 주소 |
+| Authorization callback URL | `https://api.netlify.com/auth/done` |
+
+생성 후 **Client ID**를 확인하고, **Client Secret**을 발급받아 둡니다.
+
+### 3. Netlify에 OAuth provider 등록
+
+Netlify 사이트 > Site configuration > **Access & security** > OAuth >
+**Install provider** > GitHub 선택 후 위의 Client ID / Client Secret 입력
+
+설정이 끝나면 `https://사이트주소/admin/` 접속 → "Login with GitHub" 클릭 →
+GitHub 계정으로 로그인하면 콘텐츠를 편집할 수 있습니다.
+
+> 저장소에 쓰기 권한이 있는 GitHub 계정이면 누구나 편집할 수 있습니다.
+> 편집자를 추가하려면 GitHub 저장소의 Collaborator로 초대하세요.
+
+## 로컬에서 관리자 화면 미리 써보기
+
+배포/OAuth 설정 없이 내 컴퓨터에서 바로 편집해 볼 수 있습니다.
+터미널 두 개를 열어 각각 실행하세요.
+
+```bash
+npx decap-server
+```
+
+```bash
+npm start
+```
+
+http://localhost:8080/admin/ 으로 접속하면 로그인 없이 편집할 수 있고,
+저장하면 로컬 파일이 직접 수정됩니다.
 
 ## 관리자 페이지에서 할 수 있는 것
 
