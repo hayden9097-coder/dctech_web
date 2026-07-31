@@ -16,7 +16,7 @@ Eleventy 정적 사이트 + Decap CMS 기반. 코드를 몰라도 관리자 페�
 | 문의 | `/contact/` | `src/_data/contact.json` | — |
 | 공통(로고·주소·연락처) | 전체 | `src/_data/site.json` | — |
 
-업로드한 이미지와 PDF는 `public/uploads/` 에 저장됩니다.
+업로드한 이미지와 PDF는 `public/images/uploads/` 에 저장됩니다.
 
 ## 로컬에서 확인하기
 

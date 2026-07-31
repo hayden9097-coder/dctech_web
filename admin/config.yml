@@ -6,8 +6,8 @@ backend:
 # 로컬에서 관리자 화면을 테스트할 때 사용 (npx decap-server 실행 필요)
 local_backend: true
 
-media_folder: "public/uploads"
-public_folder: "/uploads"
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
 
 locale: "ko"
 
