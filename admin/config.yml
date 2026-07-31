@@ -6,8 +6,8 @@ backend:
 # 로컬에서 관리자 화면을 테스트할 때 사용 (npx decap-server 실행 필요)
 local_backend: true
 
-media_folder: "public/images/uploads"
-public_folder: "/images/uploads"
+media_folder: "public/uploads"
+public_folder: "/uploads"
 
 locale: "ko"
 
@@ -144,6 +144,76 @@ collections:
             fields:
               - { label: "질문", name: "q", widget: "string" }
               - { label: "답변", name: "a", widget: "text" }
+
+  - name: "products"
+    label: "제품소개"
+    label_singular: "제품"
+    folder: "src/products"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "레이아웃", name: "layout", widget: "hidden", default: "product.njk" }
+      - { label: "제품명", name: "title", widget: "string" }
+      - { label: "분류 (예: AI 진단 솔루션)", name: "category", widget: "string", required: false }
+      - { label: "정렬 순서(숫자가 작을수록 먼저 표시)", name: "order", widget: "number", default: 1 }
+      - { label: "한줄 요약", name: "summary", widget: "text" }
+      - { label: "대표 이미지", name: "image", widget: "image", required: false }
+      - label: "주요 특징"
+        name: "features"
+        widget: "list"
+        required: false
+      - label: "제품 사양"
+        name: "specs"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "항목", name: "label", widget: "string" }
+          - { label: "내용", name: "value", widget: "string" }
+      - { label: "카탈로그 파일 (PDF)", name: "brochure", widget: "file", required: false }
+      - { label: "상세 설명", name: "body", widget: "markdown" }
+
+  - name: "news"
+    label: "소식 (게시판)"
+    label_singular: "게시글"
+    folder: "src/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}} · {{title}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "레이아웃", name: "layout", widget: "hidden", default: "post.njk" }
+      - { label: "제목", name: "title", widget: "string" }
+      - label: "분류"
+        name: "category"
+        widget: "select"
+        options: ["공지사항", "제품소식", "보도자료", "전시회", "채용"]
+        default: "공지사항"
+      - { label: "작성일", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+      - { label: "목록에 보일 요약", name: "summary", widget: "text" }
+      - { label: "대표 이미지", name: "thumbnail", widget: "image", required: false }
+      - { label: "첨부파일", name: "attachment", widget: "file", required: false }
+      - { label: "본문", name: "body", widget: "markdown" }
+
+  - name: "downloads"
+    label: "자료실"
+    files:
+      - file: "src/_data/downloads.json"
+        label: "자료실 목록"
+        name: "downloads"
+        fields:
+          - { label: "상단 라벨", name: "eyebrow", widget: "string" }
+          - { label: "페이지 제목", name: "title", widget: "string" }
+          - { label: "안내문", name: "intro", widget: "text" }
+          - label: "자료 목록"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "자료명", name: "title", widget: "string" }
+              - { label: "설명", name: "desc", widget: "text" }
+              - { label: "분류 (예: 제품 카탈로그)", name: "kind", widget: "string" }
+              - { label: "파일 (PDF 등)", name: "file", widget: "file", required: false }
+              - { label: "파일 형식 표시 (예: PDF, 2.4MB)", name: "filesize", widget: "string", required: false }
 
   - name: "cases"
     label: "도입 사례"

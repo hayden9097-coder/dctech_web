@@ -4,14 +4,19 @@ Eleventy 정적 사이트 + Decap CMS 기반. 코드를 몰라도 관리자 페�
 
 ## 페이지 구조
 
-| 메뉴 | 주소 | 콘텐츠 파일 |
-|---|---|---|
-| 홈 | `/` | `src/_data/home.json` |
-| 회사소개 | `/about/` | `src/_data/about.json` |
-| 핵심 솔루션 | `/solutions/` | `src/_data/solutions.json` |
-| 도입 사례 | `/cases/` | `src/cases/*.md` (사례별 1파일) |
-| 문의 | `/contact/` | `src/_data/contact.json` |
-| 공통(로고·주소·연락처) | 전체 | `src/_data/site.json` |
+| 메뉴 | 주소 | 콘텐츠 파일 | CMS에서 글 추가 |
+|---|---|---|---|
+| 홈 | `/` | `src/_data/home.json` | — |
+| 회사소개 | `/about/` | `src/_data/about.json` | — |
+| 제품소개 | `/products/` | `src/products/*.md` | ✅ 가능 |
+| 핵심 솔루션 | `/solutions/` | `src/_data/solutions.json` | — |
+| 도입 사례 | `/cases/` | `src/cases/*.md` | ✅ 가능 |
+| 자료실 | `/downloads/` | `src/_data/downloads.json` | ✅ 목록 추가 |
+| 소식 | `/news/` | `src/news/*.md` | ✅ 가능 |
+| 문의 | `/contact/` | `src/_data/contact.json` | — |
+| 공통(로고·주소·연락처) | 전체 | `src/_data/site.json` | — |
+
+업로드한 이미지와 PDF는 `public/uploads/` 에 저장됩니다.
 
 ## 로컬에서 확인하기
 
@@ -73,12 +78,14 @@ http://localhost:8080/admin/ 으로 접속하면 로그인 없이 편집할 수 
 
 ## 관리자 페이지에서 할 수 있는 것
 
+- **제품소개** — 신제품 페이지 작성 (이미지, 주요특징, 사양표, 카탈로그 PDF 첨부)
+- **소식(게시판)** — 공지사항·제품소식·보도자료·전시회 글 작성 (썸네일, 첨부파일)
+- **자료실** — 팜플릿·카탈로그 PDF 업로드 및 다운로드 목록 관리
+- **도입 사례** — 새 사례 작성 (CASE 03, 04... 계속 추가 가능)
 - 모든 페이지의 문구 수정
 - 로고·파비콘 교체 및 이미지 업로드
 - 연혁 항목 추가/삭제/순서 변경
-- 솔루션 기능 목록 추가/삭제
-- FAQ 추가/삭제
-- **도입 사례 새 글 작성** (CASE 03, 04... 계속 추가 가능)
+- 솔루션 기능 목록, FAQ 추가/삭제
 - 회사 주소·연락처·이메일 변경
 
 관리자 페이지에서 저장하면 GitHub에 자동 반영되고, Netlify가 사이트를 다시 빌드합니다.

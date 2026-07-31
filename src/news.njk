@@ -1,0 +1,43 @@
+---
+layout: base.njk
+title: 소식
+---
+<section class="page-hero grid-overlay relative pt-20 pb-16 md:pt-24 md:pb-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <p class="text-sm font-bold text-techblue-300 tracking-wider mb-3">NEWS</p>
+    <h1 class="text-2xl md:text-4xl font-extrabold text-white leading-snug">디씨테크 소식</h1>
+    <p class="mt-4 text-slate-400 max-w-2xl">공지사항, 보도자료, 전시회 참가 소식 등 디씨테크의 새로운 소식을 전해드립니다.</p>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    {% if collections.news | length %}
+    <ul class="divide-y divide-slate-200 border-t border-slate-200">
+      {% for post in collections.news %}
+      <li>
+        <a href="{{ post.url }}" class="flex gap-5 py-6 group">
+          {% if post.data.thumbnail %}
+          <div class="w-28 h-20 sm:w-36 sm:h-24 rounded-lg overflow-hidden bg-slate-100 shrink-0">
+            <img src="{{ post.data.thumbnail }}" alt="{{ post.data.title }}" class="w-full h-full object-cover">
+          </div>
+          {% endif %}
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-xs font-bold text-techblue-500 bg-techblue-50 rounded-full px-2.5 py-1">{{ post.data.category }}</span>
+              <time class="text-xs text-slate-400">{{ post.data.date | date }}</time>
+            </div>
+            <h2 class="font-bold text-navy-900 group-hover:text-techblue-500 transition-colors">{{ post.data.title }}</h2>
+            <p class="text-sm text-slate-500 mt-1.5 line-clamp-2">{{ post.data.summary }}</p>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div class="text-center py-20">
+      <p class="text-slate-400">등록된 소식이 없습니다.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>

@@ -49,24 +49,29 @@
         <img src="{{ site.logo }}" alt="{{ site.company_name_en }} {{ site.company_name_kr }}" class="h-6 md:h-7 w-auto">
       </span>
     </a>
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-      <a href="/about/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if page.url == '/about/' }}">회사소개</a>
-      <a href="/solutions/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if page.url == '/solutions/' }}">핵심 솔루션</a>
-      <a href="/cases/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if (page.url == '/cases/' or '/cases/' in page.url) }}">도입 사례</a>
-      <a href="/contact/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if page.url == '/contact/' }}">문의</a>
+    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
+      <a href="/about/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if '/about/' in page.url }}">회사소개</a>
+      <a href="/products/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if '/products/' in page.url }}">제품소개</a>
+      <a href="/solutions/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if '/solutions/' in page.url }}">핵심 솔루션</a>
+      <a href="/cases/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if '/cases/' in page.url }}">도입 사례</a>
+      <a href="/downloads/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if '/downloads/' in page.url }}">자료실</a>
+      <a href="/news/" class="hover:text-techblue-300 transition-colors {{ 'text-techblue-300' if '/news/' in page.url }}">소식</a>
     </nav>
-    <a href="/contact/" class="hidden md:inline-flex items-center gap-1.5 bg-techblue-500 hover:bg-techblue-400 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
-      도입 문의
+    <a href="/contact/" class="hidden lg:inline-flex items-center gap-1.5 bg-techblue-500 hover:bg-techblue-400 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
+      문의하기
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
     </a>
-    <button id="mobileMenuBtn" class="md:hidden text-white p-2">
+    <button id="mobileMenuBtn" class="lg:hidden text-white p-2">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </div>
-  <div id="mobileMenu" class="hidden md:hidden bg-navy-950 border-t border-white/10 px-6 py-4 space-y-3">
+  <div id="mobileMenu" class="hidden lg:hidden bg-navy-950 border-t border-white/10 px-6 py-4 space-y-3">
     <a href="/about/" class="block text-slate-300 hover:text-techblue-300">회사소개</a>
+    <a href="/products/" class="block text-slate-300 hover:text-techblue-300">제품소개</a>
     <a href="/solutions/" class="block text-slate-300 hover:text-techblue-300">핵심 솔루션</a>
     <a href="/cases/" class="block text-slate-300 hover:text-techblue-300">도입 사례</a>
+    <a href="/downloads/" class="block text-slate-300 hover:text-techblue-300">자료실</a>
+    <a href="/news/" class="block text-slate-300 hover:text-techblue-300">소식</a>
     <a href="/contact/" class="block bg-techblue-500 text-white text-center font-semibold px-4 py-2 rounded-lg mt-2">문의하기</a>
   </div>
 </header>
@@ -90,14 +95,22 @@
           {{ site.email }}
         </p>
       </div>
-      <div class="flex gap-16 text-sm">
+      <div class="flex gap-12 sm:gap-16 text-sm">
         <div>
-          <p class="text-white font-semibold mb-3">사이트맵</p>
+          <p class="text-white font-semibold mb-3">회사</p>
           <ul class="space-y-2 text-slate-500">
             <li><a href="/about/" class="hover:text-techblue-300 transition-colors">회사소개</a></li>
+            <li><a href="/news/" class="hover:text-techblue-300 transition-colors">소식</a></li>
+            <li><a href="/contact/" class="hover:text-techblue-300 transition-colors">문의하기</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">제품 · 기술</p>
+          <ul class="space-y-2 text-slate-500">
+            <li><a href="/products/" class="hover:text-techblue-300 transition-colors">제품소개</a></li>
             <li><a href="/solutions/" class="hover:text-techblue-300 transition-colors">핵심 솔루션</a></li>
             <li><a href="/cases/" class="hover:text-techblue-300 transition-colors">도입 사례</a></li>
-            <li><a href="/contact/" class="hover:text-techblue-300 transition-colors">문의하기</a></li>
+            <li><a href="/downloads/" class="hover:text-techblue-300 transition-colors">자료실</a></li>
           </ul>
         </div>
       </div>

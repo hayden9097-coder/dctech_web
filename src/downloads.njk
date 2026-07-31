@@ -1,0 +1,51 @@
+---
+layout: base.njk
+title: 자료실
+---
+<section class="page-hero grid-overlay relative pt-20 pb-16 md:pt-24 md:pb-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <p class="text-sm font-bold text-techblue-300 tracking-wider mb-3">{{ downloads.eyebrow }}</p>
+    <h1 class="text-2xl md:text-4xl font-extrabold text-white leading-snug">{{ downloads.title }}</h1>
+    <p class="mt-4 text-slate-400 max-w-2xl">{{ downloads.intro }}</p>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    <div class="space-y-4">
+      {% for d in downloads.items %}
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4 p-6 rounded-2xl border border-slate-200 {{ 'hover:border-techblue-500/50 transition-colors' if d.file }}">
+        <div class="w-12 h-12 rounded-xl bg-techblue-500/10 flex items-center justify-center shrink-0">
+          <svg class="w-6 h-6 text-techblue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xs font-bold text-techblue-500 bg-techblue-50 rounded-full px-2.5 py-0.5">{{ d.kind }}</span>
+            {% if d.filesize %}<span class="text-xs text-slate-400">{{ d.filesize }}</span>{% endif %}
+          </div>
+          <p class="font-bold text-navy-900">{{ d.title }}</p>
+          <p class="text-sm text-slate-500 mt-1">{{ d.desc }}</p>
+        </div>
+        {% if d.file %}
+        <a href="{{ d.file }}" download class="inline-flex items-center justify-center gap-2 bg-techblue-500 hover:bg-techblue-400 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors shrink-0">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          다운로드
+        </a>
+        {% else %}
+        <span class="inline-flex items-center justify-center gap-2 bg-slate-100 text-slate-400 text-sm font-semibold px-5 py-2.5 rounded-lg shrink-0 cursor-not-allowed">
+          준비중
+        </span>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="mt-12 p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+      <p class="text-sm text-slate-600">필요하신 자료가 없으신가요?</p>
+      <a href="/contact/" class="inline-flex items-center gap-1 text-sm font-semibold text-techblue-500 hover:text-techblue-400 mt-2">
+        자료 요청 문의하기
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
