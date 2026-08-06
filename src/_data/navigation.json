@@ -1,0 +1,70 @@
+{
+  "cta_label": "문의하기",
+  "cta_url": "/contact/",
+  "show_phone": true,
+  "menu": [
+    {
+      "label": "회사소개",
+      "url": "/about/",
+      "children": [
+        { "label": "인사말 · 비전", "url": "/about/#greeting" },
+        { "label": "핵심가치", "url": "/about/#values" },
+        { "label": "회사연혁", "url": "/about/#history" },
+        { "label": "찾아오시는 길", "url": "/contact/#location" }
+      ]
+    },
+    {
+      "label": "제품소개",
+      "url": "/products/",
+      "children": [
+        { "label": "전체 제품", "url": "/products/" },
+        { "label": "PumpGuard AI 진단 시스템", "url": "/products/pump-ai-diagnostics/" },
+        { "label": "DataBridge 데이터 변환 SW", "url": "/products/data-integration-sw/" }
+      ]
+    },
+    {
+      "label": "핵심 솔루션",
+      "url": "/solutions/",
+      "children": [
+        { "label": "3대 핵심 기술", "url": "/solutions/" },
+        { "label": "진단 프로세스", "url": "/solutions/#process" },
+        { "label": "도입 사례", "url": "/cases/" }
+      ]
+    },
+    {
+      "label": "자료실",
+      "url": "/downloads/",
+      "children": []
+    },
+    {
+      "label": "소식",
+      "url": "/news/",
+      "children": [
+        { "label": "전체 게시물", "url": "/news/" },
+        { "label": "공지사항", "url": "/news/category/notice/" },
+        { "label": "보도자료", "url": "/news/category/press/" },
+        { "label": "제품소식", "url": "/news/category/product/" },
+        { "label": "매뉴얼", "url": "/news/category/manual/" }
+      ]
+    }
+  ],
+  "footer_columns": [
+    {
+      "title": "회사",
+      "links": [
+        { "label": "회사소개", "url": "/about/" },
+        { "label": "소식", "url": "/news/" },
+        { "label": "문의하기", "url": "/contact/" }
+      ]
+    },
+    {
+      "title": "제품 · 기술",
+      "links": [
+        { "label": "제품소개", "url": "/products/" },
+        { "label": "핵심 솔루션", "url": "/solutions/" },
+        { "label": "도입 사례", "url": "/cases/" },
+        { "label": "자료실", "url": "/downloads/" }
+      ]
+    }
+  ]
+}

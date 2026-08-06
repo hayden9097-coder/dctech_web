@@ -1,0 +1,31 @@
+---
+layout: base.njk
+pagination:
+  data: newsCategories
+  size: 1
+  alias: cat
+permalink: "/news/category/{{ cat.slug }}/"
+eleventyComputed:
+  title: "{{ cat.label }}"
+  description: "디씨테크 {{ cat.label }} 목록입니다."
+---
+<section class="page-hero grid-overlay relative pt-20 pb-16 md:pt-24 md:pb-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <p class="text-sm font-bold text-techblue-300 tracking-wider mb-3">NEWS</p>
+    <h1 class="text-2xl md:text-4xl font-extrabold text-white leading-snug">{{ cat.label }}</h1>
+    <p class="mt-4 text-slate-400 max-w-2xl">디씨테크의 {{ cat.label }} 게시물입니다.</p>
+  </div>
+</section>
+
+<section class="py-14 md:py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8">
+    {% set posts = [] %}
+    {% for p in collections.news %}
+      {% if p.data.category == cat.label %}
+        {% set posts = (posts.push(p), posts) %}
+      {% endif %}
+    {% endfor %}
+    {% set activeSlug = cat.slug %}
+    {% include "news-list.njk" %}
+  </div>
+</section>

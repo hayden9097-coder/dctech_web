@@ -1,0 +1,55 @@
+{# 소식 목록 공통 파츠 — 탭 + 게시글 리스트 #}
+{# 필요한 변수: posts(게시글 배열), activeSlug(현재 카테고리 slug, 전체는 "") #}
+
+<div class="border-b border-slate-200 mb-2">
+  <div class="flex items-center gap-1 overflow-x-auto -mb-px" role="tablist">
+    <a href="/news/"
+       class="shrink-0 px-4 py-3 text-sm font-semibold border-b-2 transition-colors
+              {{ 'text-techblue-500 border-techblue-500' if not activeSlug else 'text-slate-500 border-transparent hover:text-navy-900' }}"
+       {{ 'aria-current="page"' if not activeSlug }}>
+      전체 게시물
+    </a>
+    {% for cat in newsCategories %}
+    {% set count = 0 %}
+    {% for p in collections.news %}{% if p.data.category == cat.label %}{% set count = count + 1 %}{% endif %}{% endfor %}
+    {% if count > 0 %}
+    <a href="/news/category/{{ cat.slug }}/"
+       class="shrink-0 px-4 py-3 text-sm font-semibold border-b-2 transition-colors
+              {{ 'text-techblue-500 border-techblue-500' if activeSlug == cat.slug else 'text-slate-500 border-transparent hover:text-navy-900' }}"
+       {{ 'aria-current="page"' if activeSlug == cat.slug }}>
+      {{ cat.label }}
+      <span class="ml-1 text-xs font-normal text-slate-400">{{ count }}</span>
+    </a>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% if posts | length %}
+<ul class="divide-y divide-slate-200">
+  {% for post in posts %}
+  <li>
+    <a href="{{ post.url }}" class="flex gap-5 py-7 group">
+      {% if post.data.thumbnail %}
+      <div class="w-28 h-20 sm:w-40 sm:h-28 rounded-lg overflow-hidden bg-slate-100 shrink-0">
+        <img src="{{ post.data.thumbnail }}" alt="" class="w-full h-full object-cover">
+      </div>
+      {% endif %}
+      <div class="min-w-0 flex-1">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-xs font-bold text-techblue-500">{{ post.data.category }}</span>
+          <time class="text-xs text-slate-400" datetime="{{ post.data.date }}">{{ post.data.date | date }}</time>
+        </div>
+        <h2 class="text-lg font-bold text-navy-900 group-hover:text-techblue-500 transition-colors">{{ post.data.title }}</h2>
+        <p class="text-sm text-slate-500 mt-2 leading-relaxed line-clamp-2">{{ post.data.summary }}</p>
+      </div>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<div class="text-center py-24">
+  <svg class="w-12 h-12 text-slate-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2M7 16h6M7 8h6v4H7V8z"/></svg>
+  <p class="text-slate-400">해당 분류에 등록된 게시물이 없습니다.</p>
+</div>
+{% endif %}

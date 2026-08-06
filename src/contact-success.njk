@@ -1,0 +1,35 @@
+---
+layout: base.njk
+title: 문의 접수 완료
+description: 문의가 정상적으로 접수되었습니다.
+permalink: /contact/success/
+eleventyExcludeFromCollections: true
+---
+<section class="page-hero grid-overlay relative pt-24 pb-20 md:pt-32 md:pb-28">
+  <div class="max-w-2xl mx-auto px-6 lg:px-8 text-center">
+    <div class="w-16 h-16 rounded-full bg-techblue-500/15 border border-techblue-500/30 flex items-center justify-center mx-auto mb-6">
+      <svg class="w-8 h-8 text-techblue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <h1 class="text-2xl md:text-3xl font-extrabold text-white leading-snug">문의가 정상적으로 접수되었습니다</h1>
+    <p class="mt-4 text-slate-400 leading-relaxed">
+      소중한 문의 감사합니다.<br>
+      담당 컨설턴트가 내용을 확인한 뒤 <strong class="text-techblue-300">영업일 기준 1일 이내</strong>로 연락드리겠습니다.
+    </p>
+
+    <div class="mt-8 p-5 rounded-xl bg-white/5 border border-white/10 text-sm text-slate-400">
+      급하신 경우 아래로 직접 연락 주셔도 됩니다.<br>
+      <a href="tel:{{ site.phone | replace('-', '') }}" class="text-white font-bold hover:text-techblue-300 transition-colors">{{ site.phone }}</a>
+      <span class="mx-2 text-slate-600">|</span>
+      <a href="mailto:{{ site.email }}" class="text-white font-bold hover:text-techblue-300 transition-colors">{{ site.email }}</a>
+    </div>
+
+    <div class="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="/" class="inline-flex items-center justify-center gap-2 bg-techblue-500 hover:bg-techblue-400 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+        홈으로 돌아가기
+      </a>
+      <a href="/products/" class="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/20 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+        제품 살펴보기
+      </a>
+    </div>
+  </div>
+</section>

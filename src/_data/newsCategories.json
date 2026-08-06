@@ -1,0 +1,7 @@
+[
+  { "slug": "notice", "label": "공지사항" },
+  { "slug": "press", "label": "보도자료" },
+  { "slug": "product", "label": "제품소식" },
+  { "slug": "manual", "label": "매뉴얼" },
+  { "slug": "exhibition", "label": "전시회" }
+]
