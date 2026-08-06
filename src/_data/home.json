@@ -1,4 +1,6 @@
 {
+  "hero_image": "/images/hero-diagnostics.svg",
+  "hero_image_alt": "산업용 펌프 실시간 AI 진단 화면 — 진동 신호 파형과 진동·압력·유량 상태 표시",
   "hero_badge": "INDUSTRIAL PUMP AI DIAGNOSTICS",
   "hero_title_line1": "설비가 멈추기 전에,",
   "hero_title_line2": "AI가 먼저 진단합니다.",

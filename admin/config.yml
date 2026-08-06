@@ -220,6 +220,17 @@ collections:
         label: "홈 화면"
         name: "home"
         fields:
+          - label: "상단 대표 이미지"
+            name: "hero_image"
+            widget: "image"
+            required: false
+            hint: "첫 화면 오른쪽에 표시됩니다. 실제 설비 사진으로 교체하셔도 됩니다(가로형 권장). 비우면 글자만 표시됩니다."
+          - label: "상단 대표 이미지 설명"
+            name: "hero_image_alt"
+            widget: "string"
+            required: false
+            hint: "이미지가 안 보이는 환경과 검색엔진에 전달되는 설명입니다. 사진을 바꾸면 이 문구도 함께 바꿔주세요."
+
           - label: "상단 작은 뱃지 문구"
             name: "hero_badge"
             widget: "string"

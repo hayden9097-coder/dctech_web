@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 480" width="560" height="480" role="img" aria-labelledby="heroTitle heroDesc">
+  <title id="heroTitle">산업용 펌프 AI 진단 대시보드</title>
+  <desc id="heroDesc">설비에서 수집한 진동 신호 파형과 진동·압력·유량 상태를 표시하는 진단 화면 이미지</desc>
+
+  <defs>
+    <linearGradient id="cardBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f2247" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0a1730" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <linearGradient id="waveFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2f7dfa" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#2f7dfa" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="waveStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5b9bff"/>
+      <stop offset="55%" stop-color="#8ec0ff"/>
+      <stop offset="100%" stop-color="#5b9bff"/>
+    </linearGradient>
+
+    <linearGradient id="scanLine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8ec0ff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#8ec0ff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8ec0ff" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <clipPath id="chartClip">
+      <rect x="46" y="86" width="468" height="150" rx="8"/>
+    </clipPath>
+  </defs>
+
+  <!-- 카드 -->
+  <rect x="16" y="16" width="528" height="448" rx="26"
+        fill="url(#cardBg)" stroke="#2f7dfa" stroke-opacity="0.28" stroke-width="1.5"/>
+
+  <!-- 상단 바 -->
+  <g>
+    <circle cx="48" cy="52" r="5" fill="#34d399"/>
+    <text x="64" y="57" font-family="system-ui, -apple-system, 'Malgun Gothic', sans-serif"
+          font-size="14" font-weight="700" fill="#e8f1ff">실시간 설비 진단</text>
+    <rect x="404" y="39" width="112" height="26" rx="13" fill="#34d399" fill-opacity="0.14"/>
+    <text x="460" y="57" text-anchor="middle" font-family="system-ui, -apple-system, 'Malgun Gothic', sans-serif"
+          font-size="12.5" font-weight="700" fill="#34d399">정상 가동</text>
+  </g>
+
+  <!-- 차트 영역 -->
+  <rect x="46" y="86" width="468" height="150" rx="8" fill="#050b18" fill-opacity="0.5"/>
+
+  <g clip-path="url(#chartClip)">
+    <!-- 눈금선 -->
+    <g stroke="#5b9bff" stroke-opacity="0.10" stroke-width="1">
+      <line x1="46" y1="123" x2="514" y2="123"/>
+      <line x1="46" y1="161" x2="514" y2="161"/>
+      <line x1="46" y1="199" x2="514" y2="199"/>
+      <line x1="124" y1="86" x2="124" y2="236"/>
+      <line x1="202" y1="86" x2="202" y2="236"/>
+      <line x1="280" y1="86" x2="280" y2="236"/>
+      <line x1="358" y1="86" x2="358" y2="236"/>
+      <line x1="436" y1="86" x2="436" y2="236"/>
+    </g>
+
+    <!-- 신호 파형 면 -->
+    <path fill="url(#waveFill)"
+          d="M46 236 L46 168 L64 158 L80 186 L96 138 L112 200 L128 118 L144 190 L160 148
+             L176 176 L192 128 L208 196 L224 144 L240 166 L256 108 L272 200 L288 154
+             L304 182 L320 132 L336 192 L352 150 L368 172 L384 122 L400 196 L416 158
+             L432 176 L448 138 L464 188 L480 154 L496 172 L514 150 L514 236 Z"/>
+
+    <!-- 신호 파형 선 -->
+    <path fill="none" stroke="url(#waveStroke)" stroke-width="2.4"
+          stroke-linejoin="round" stroke-linecap="round" filter="url(#softGlow)"
+          d="M46 168 L64 158 L80 186 L96 138 L112 200 L128 118 L144 190 L160 148
+             L176 176 L192 128 L208 196 L224 144 L240 166 L256 108 L272 200 L288 154
+             L304 182 L320 132 L336 192 L352 150 L368 172 L384 122 L400 196 L416 158
+             L432 176 L448 138 L464 188 L480 154 L496 172 L514 150"/>
+
+    <!-- 스캔 라인 -->
+    <rect x="352" y="86" width="2.5" height="150" fill="url(#scanLine)"/>
+
+    <!-- 이상 감지 지점 -->
+    <circle cx="256" cy="108" r="16" fill="#fbbf24" fill-opacity="0.14"/>
+    <circle cx="256" cy="108" r="5" fill="#fbbf24"/>
+  </g>
+
+  <!-- 차트 라벨 -->
+  <text x="46" y="256" font-family="system-ui, -apple-system, 'Malgun Gothic', sans-serif"
+        font-size="11.5" fill="#7d93b8">진동 신호 (mm/s)</text>
+  <text x="514" y="256" text-anchor="end" font-family="system-ui, -apple-system, 'Malgun Gothic', sans-serif"
+        font-size="11.5" fill="#7d93b8">최근 24시간</text>
+
+  <!-- 게이지 3종 -->
+  <g font-family="system-ui, -apple-system, 'Malgun Gothic', sans-serif">
+    <!-- 진동 -->
+    <g transform="translate(140,352)">
+      <circle r="40" fill="none" stroke="#1d3560" stroke-width="9"/>
+      <circle r="40" fill="none" stroke="#34d399" stroke-width="9" stroke-linecap="round"
+              stroke-dasharray="196 251.3" transform="rotate(-90)"/>
+      <text y="-2" text-anchor="middle" font-size="21" font-weight="700" fill="#ffffff">3.37</text>
+      <text y="15" text-anchor="middle" font-size="10.5" fill="#7d93b8">mm/s</text>
+      <text y="62" text-anchor="middle" font-size="12.5" font-weight="600" fill="#c9d9f2">진동</text>
+    </g>
+
+    <!-- 압력 -->
+    <g transform="translate(280,352)">
+      <circle r="40" fill="none" stroke="#1d3560" stroke-width="9"/>
+      <circle r="40" fill="none" stroke="#5b9bff" stroke-width="9" stroke-linecap="round"
+              stroke-dasharray="231 251.3" transform="rotate(-90)"/>
+      <text y="-2" text-anchor="middle" font-size="21" font-weight="700" fill="#ffffff">40.2</text>
+      <text y="15" text-anchor="middle" font-size="10.5" fill="#7d93b8">bar</text>
+      <text y="62" text-anchor="middle" font-size="12.5" font-weight="600" fill="#c9d9f2">압력</text>
+    </g>
+
+    <!-- 유량 -->
+    <g transform="translate(420,352)">
+      <circle r="40" fill="none" stroke="#1d3560" stroke-width="9"/>
+      <circle r="40" fill="none" stroke="#fbbf24" stroke-width="9" stroke-linecap="round"
+              stroke-dasharray="161 251.3" transform="rotate(-90)"/>
+      <text y="-2" text-anchor="middle" font-size="21" font-weight="700" fill="#ffffff">17.1</text>
+      <text y="15" text-anchor="middle" font-size="10.5" fill="#7d93b8">m³/h</text>
+      <text y="62" text-anchor="middle" font-size="12.5" font-weight="600" fill="#c9d9f2">유량</text>
+    </g>
+  </g>
+</svg>

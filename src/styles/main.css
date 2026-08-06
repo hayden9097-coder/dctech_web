@@ -16,8 +16,19 @@
 }
 
 @layer components {
+  /* 격자무늬 단독 사용 (자식 div에 겹쳐 쓰는 경우) */
+  .grid-overlay {
+    background-image: linear-gradient(
+        rgba(94, 163, 255, 0.06) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(94, 163, 255, 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
   .gradient-hero {
-    background: radial-gradient(
+    background-color: #050b18;
+    background-image: radial-gradient(
         1200px 600px at 80% -10%,
         rgba(47, 125, 250, 0.25),
         transparent 60%
@@ -26,16 +37,38 @@
   }
 
   .page-hero {
-    background: linear-gradient(180deg, #0a1730 0%, #0f2247 100%);
+    background-color: #0a1730;
+    background-image: linear-gradient(180deg, #0a1730 0%, #0f2247 100%);
   }
 
-  .grid-overlay {
+  /*
+    같은 요소에 hero 배경과 격자를 함께 쓰는 경우.
+    background-image 는 하나만 적용되므로 두 레이어를 명시적으로 합친다.
+    (합성 선택자로 특정도를 높여 CSS 순서와 무관하게 항상 우선 적용)
+  */
+  .gradient-hero.grid-overlay {
     background-image: linear-gradient(
         rgba(94, 163, 255, 0.06) 1px,
         transparent 1px
       ),
-      linear-gradient(90deg, rgba(94, 163, 255, 0.06) 1px, transparent 1px);
-    background-size: 40px 40px;
+      linear-gradient(90deg, rgba(94, 163, 255, 0.06) 1px, transparent 1px),
+      radial-gradient(
+        1200px 600px at 80% -10%,
+        rgba(47, 125, 250, 0.25),
+        transparent 60%
+      ),
+      linear-gradient(180deg, #050b18 0%, #0a1730 60%, #0f2247 100%);
+    background-size: 40px 40px, 40px 40px, auto, auto;
+  }
+
+  .page-hero.grid-overlay {
+    background-image: linear-gradient(
+        rgba(94, 163, 255, 0.06) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(94, 163, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(180deg, #0a1730 0%, #0f2247 100%);
+    background-size: 40px 40px, 40px 40px, auto;
   }
 
   .card-hover {
