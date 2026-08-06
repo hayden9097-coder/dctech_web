@@ -49,3 +49,18 @@ title: 회사소개
     </div>
   </div>
 </section>
+
+{% if about.org_image %}
+<section id="organization" class="py-16 md:py-24 bg-slate-50">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+    <h2 class="text-xl md:text-3xl font-extrabold text-navy-900">{{ about.org_title }}</h2>
+    {% if about.org_desc %}
+    <p class="mt-4 text-slate-600 leading-relaxed max-w-2xl mx-auto">{{ about.org_desc }}</p>
+    {% endif %}
+    <figure class="mt-10 rounded-2xl border border-slate-200 bg-white p-6 md:p-10">
+      <img src="{{ about.org_image }}" alt="{{ site.company_name_kr }} 조직도"
+           class="w-full max-w-2xl h-auto mx-auto" loading="lazy" decoding="async">
+    </figure>
+  </div>
+</section>
+{% endif %}

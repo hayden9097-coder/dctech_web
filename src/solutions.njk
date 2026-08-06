@@ -10,7 +10,24 @@ title: 핵심 솔루션
   </div>
 </section>
 
+{% if solutions.diagram_image %}
 <section class="py-16 md:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <h2 class="text-xl md:text-3xl font-extrabold text-navy-900">{{ solutions.diagram_title }}</h2>
+      <p class="mt-4 text-slate-600 leading-relaxed">{{ solutions.diagram_desc }}</p>
+    </div>
+    <figure class="rounded-2xl border border-slate-200 bg-slate-50 p-4 md:p-8 overflow-x-auto">
+      <img src="{{ solutions.diagram_image }}"
+           alt="{{ solutions.diagram_title }} 전체 흐름도 — 압력·유량·진동 데이터 수집에서 데이터연계/변환, 빅데이터, 성능평가 AI를 거쳐 성능평가·성능예측·성능감시로 이어지는 구조"
+           class="w-full min-w-[640px] h-auto"
+           width="1800" height="814" loading="lazy" decoding="async">
+    </figure>
+  </div>
+</section>
+{% endif %}
+
+<section class="py-16 md:py-24 bg-slate-50">
   <div class="max-w-7xl mx-auto px-6 lg:px-8 space-y-16">
     {% for item in solutions.items %}
     <div class="grid lg:grid-cols-12 gap-10 items-start">
@@ -29,8 +46,13 @@ title: 핵심 솔루션
         <p class="text-sm text-slate-500 mb-4">{{ item.summary }}</p>
         <p class="text-sm text-slate-600 leading-relaxed">{{ item.detail }}</p>
       </div>
-      <div class="lg:col-span-7 {{ 'lg:order-1' if loop.index is even }}">
-        <div class="bg-navy-950 rounded-2xl p-8 h-full">
+      <div class="lg:col-span-7 {{ 'lg:order-1' if loop.index is even }} space-y-6">
+        {% if item.image %}
+        <img src="{{ item.image }}" alt="{{ item.title }} 화면 예시"
+             class="w-full h-auto rounded-2xl border border-slate-200 bg-white"
+             loading="lazy" decoding="async">
+        {% endif %}
+        <div class="bg-navy-950 rounded-2xl p-8">
           <p class="text-xs font-bold text-techblue-300 tracking-wider mb-5">주요 기능</p>
           <ul class="space-y-4">
             {% for f in item.features %}

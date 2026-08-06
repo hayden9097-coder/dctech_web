@@ -9,6 +9,7 @@
       "children": [
         { "label": "인사말 · 비전", "url": "/about/#greeting" },
         { "label": "핵심가치", "url": "/about/#values" },
+        { "label": "조직도", "url": "/about/#organization" },
         { "label": "회사연혁", "url": "/about/#history" },
         { "label": "찾아오시는 길", "url": "/contact/#location" }
       ]

@@ -76,7 +76,31 @@ title: 홈
   </div>
 </section>
 
+{% if solutions.diagram_image %}
 <section class="py-20 md:py-28 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <p class="text-sm font-bold text-techblue-500 tracking-wider mb-2">SOLUTION</p>
+      <h2 class="text-2xl md:text-3xl font-extrabold text-navy-900">{{ solutions.diagram_title }}</h2>
+      <p class="mt-4 text-slate-600 leading-relaxed">{{ solutions.diagram_desc }}</p>
+    </div>
+    <figure class="rounded-2xl border border-slate-200 bg-white p-4 md:p-8 overflow-x-auto">
+      <img src="{{ solutions.diagram_image }}"
+           alt="{{ solutions.diagram_title }} 전체 흐름도 — 압력·유량·진동 데이터 수집에서 데이터연계/변환, 빅데이터, 성능평가 AI를 거쳐 성능평가·성능예측·성능감시로 이어지는 구조"
+           class="w-full min-w-[640px] h-auto"
+           width="1800" height="814" loading="lazy" decoding="async">
+    </figure>
+    <div class="text-center mt-8">
+      <a href="/solutions/" class="inline-flex items-center gap-1 text-sm font-semibold text-techblue-500 hover:text-techblue-400">
+        솔루션 자세히 보기
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="py-20 md:py-28 bg-white">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-end justify-between mb-10">
       <div>
@@ -113,7 +137,7 @@ title: 홈
   </div>
 </section>
 
-<section class="py-20 md:py-28 bg-white">
+<section class="py-20 md:py-28 bg-slate-50">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-end justify-between mb-10">
       <div>

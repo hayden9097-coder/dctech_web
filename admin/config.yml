@@ -324,6 +324,14 @@ collections:
               - { label: "제목", name: "title", widget: "string" }
               - { label: "설명", name: "desc", widget: "text" }
 
+          - { label: "조직도 섹션 제목", name: "org_title", widget: "string", required: false }
+          - { label: "조직도 설명", name: "org_desc", widget: "text", required: false }
+          - label: "조직도 이미지"
+            name: "org_image"
+            widget: "image"
+            required: false
+            hint: "비워두면 조직도 섹션이 통째로 숨겨집니다."
+
           - { label: "연혁 섹션 제목", name: "history_title", widget: "string" }
           - label: "회사 연혁"
             name: "history"
@@ -347,6 +355,15 @@ collections:
           - { label: "상단 영문 라벨", name: "eyebrow", widget: "string" }
           - { label: "페이지 제목", name: "title", widget: "string" }
           - { label: "페이지 설명문", name: "subtitle", widget: "text" }
+
+          - { label: "솔루션 흐름도 제목", name: "diagram_title", widget: "string", required: false }
+          - { label: "솔루션 흐름도 설명", name: "diagram_desc", widget: "text", required: false }
+          - label: "솔루션 흐름도 이미지"
+            name: "diagram_image"
+            widget: "image"
+            required: false
+            hint: "전체 솔루션 구조를 보여주는 가로형 다이어그램입니다. 비워두면 해당 섹션이 통째로 숨겨집니다."
+
           - label: "핵심 기술"
             name: "items"
             widget: "list"
@@ -361,6 +378,11 @@ collections:
                   - { label: "원통 (데이터베이스)", value: "database" }
                   - { label: "화살표 (데이터 변환)", value: "swap" }
               - { label: "기술명", name: "title", widget: "string" }
+              - label: "설명 이미지"
+                name: "image"
+                widget: "image"
+                required: false
+                hint: "해당 기술의 화면 예시나 개념도입니다. 비워두면 이미지 없이 기능 목록만 표시됩니다."
               - { label: "한줄 요약", name: "summary", widget: "string" }
               - { label: "상세 설명", name: "detail", widget: "text" }
               - label: "주요 기능"
