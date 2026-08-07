@@ -1,9 +1,10 @@
 ---
 layout: product.njk
-title: DataBridge 데이터 통합 변환 SW
-category: 데이터 연계 솔루션
+title: AssetPulse 무선진동센서 관리시스템
+category: 무선진동센서 계측 시스템
 order: 2
 summary: 제조사와 형식이 서로 다른 설비 데이터를 하나의 표준 체계로 통합하는 데이터 변환 소프트웨어입니다.
+image: /images/uploads/chatgpt-image-2026년-6월-20일-오전-07_53_27.png
 features:
   - PI System / ODBC / OPC 등 산업 표준 프로토콜 연계
   - nonbinary data, wave file 등 비정형 신호 변환
