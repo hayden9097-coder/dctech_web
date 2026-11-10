@@ -11,18 +11,18 @@
       "filesize": "PDF"
     },
     {
-      "title": "PumpGuard AI 진단 시스템 카탈로그",
-      "desc": "산업용 펌프 AI 진단 시스템의 기능과 사양을 담은 제품 카탈로그입니다.",
-      "kind": "제품 카탈로그",
-      "file": "",
-      "filesize": "PDF"
-    },
-    {
       "title": "DataBridge 데이터 통합 변환 SW 소개서",
       "desc": "이기종 설비 데이터 통합을 위한 변환 소프트웨어 소개 자료입니다.",
       "kind": "제품 카탈로그",
       "file": "",
       "filesize": "PDF"
+    },
+    {
+      "title": "AssetPulse 사용자 설명서",
+      "desc": "AssetPulse(Server·Gateway)의 로그인부터 대시보드, 측정 데이터, 알람, 정비, 보고서, 현장 Gateway 사용법까지 화면과 함께 설명한 사용자 설명서입니다. (문서 버전 1.0 · 제품 버전 1.0.0-rc1)",
+      "kind": "사용자메뉴얼",
+      "file": "/images/uploads/assetpulse-user-manual-ko.pdf",
+      "filesize": "PDF, 7.9MB"
     }
   ]
 }
