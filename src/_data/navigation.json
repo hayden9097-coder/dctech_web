@@ -20,7 +20,7 @@
       "children": [
         { "label": "전체 제품", "url": "/products/" },
         { "label": "PumpGuard AI 진단 시스템", "url": "/products/pump-ai-diagnostics/" },
-        { "label": "DataBridge 데이터 변환 SW", "url": "/products/data-integration-sw/" }
+        { "label": "AssetPulse 무선진동센서 관리시스템", "url": "/products/data-integration-sw/" }
       ]
     },
     {
