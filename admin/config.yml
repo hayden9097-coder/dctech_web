@@ -110,6 +110,16 @@ collections:
         required: false
         hint: "카드 위에 작은 뱃지로 표시됩니다. 예) AI 진단 솔루션"
 
+      - label: "상세 페이지 템플릿"
+        name: "template"
+        widget: "select"
+        required: false
+        default: "default"
+        options:
+          - { label: "기본 템플릿", value: "default" }
+          - { label: "AssetPulse 전용 템플릿", value: "assetpulse" }
+        hint: "대부분의 제품은 '기본 템플릿'입니다. AssetPulse 제품만 '전용 템플릿'을 선택하면 화면 중심의 전용 상세 페이지로 표시됩니다."
+
       - label: "표시 순서"
         name: "order"
         widget: "number"

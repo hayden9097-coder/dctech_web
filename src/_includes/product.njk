@@ -1,6 +1,10 @@
 ---
 layout: base.njk
 ---
+{# 상세 템플릿 선택: 제품 문서의 `template: assetpulse` 이면 AssetPulse 전용 템플릿, 그 외(없음/default)는 기존 일반 템플릿을 그대로 쓴다. #}
+{% if template == "assetpulse" %}
+{% include "product-assetpulse.njk" %}
+{% else %}
 <section class="page-hero grid-overlay relative pt-16 pb-16 md:pt-20 md:pb-20">
   <div class="max-w-5xl mx-auto px-6 lg:px-8">
     <a href="/products/" class="inline-flex items-center gap-1.5 text-sm text-techblue-300 hover:text-white transition-colors mb-6">
@@ -74,3 +78,5 @@ layout: base.njk
     </div>
   </div>
 </section>
+
+{% endif %}

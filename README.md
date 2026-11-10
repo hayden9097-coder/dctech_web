@@ -18,6 +18,10 @@ Eleventy 정적 사이트 + Decap CMS 기반. 코드를 몰라도 관리자 페�
 
 업로드한 이미지와 PDF는 `public/images/uploads/` 에 저장됩니다.
 
+## AssetPulse 전용 상세 페이지
+
+제품 문서에 `template: assetpulse` 가 있으면 화면 중심의 전용 템플릿으로 표시됩니다(CMS 의 "상세 페이지 템플릿" 선택). 다른 제품은 기존 템플릿을 그대로 씁니다. 구조·수정 방법·시안 비교는 [docs/assetpulse-product-page.md](docs/assetpulse-product-page.md) 를 보세요.
+
 ## 로컬에서 확인하기
 
 ```bash

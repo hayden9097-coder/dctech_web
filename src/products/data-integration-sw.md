@@ -2,9 +2,11 @@
 layout: product.njk
 title: AssetPulse 무선진동센서 관리시스템
 category: 무선진동센서 계측 시스템
+template: assetpulse
 order: 2
 summary: ZigBee/Bluetooth 무선 센서로 설비 진동을 실시간 수집·분석해 이상 징후를 조기에 진단하는 예지보전(PdM) 플랫폼
 image: /images/uploads/chatgpt-image-2026년-6월-20일-오전-07_53_27.png
+brochure: /images/uploads/assetpulse-catalog.pdf
 features:
   - ZigBee/Bluetooth 무선 진동·온도 센서를 통한 비접촉 실시간 데이터 수집
   - FFT 기반 주파수 분석(속도/가속도 스펙트럼
