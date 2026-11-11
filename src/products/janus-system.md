@@ -27,7 +27,7 @@ specs:
   - label: 수집
     value: Modbus TCP/RTU · OPC UA · MQTT · RS-232/485 직렬 · HTTP API · LoRa · 셀룰러 모뎀 · 카메라(RTSP/ONVIF)
   - label: 저장
-    value: Historian — 원시값 · 현재값 · 집계 · 계산 태그 · CSV/Excel 내보내기
+    value: "Historian: 원시값 · 현재값 · 집계 · 계산 태그 · CSV/Excel 내보내기"
   - label: 시각화
     value: 웹 관제 화면 · UI Studio(위젯 60종 이상, 게시·버전 관리)
   - label: 현장 도구
@@ -39,7 +39,7 @@ specs:
   - label: 보안
     value: 역할 기반 권한 · 사이트 범위 · 감사 기록 · 관리자 2단계 인증
   - label: 설치 환경
-    value: Central — Ubuntu Linux(x86_64), Edge — Linux(amd64 · arm64)
+    value: "Central: Ubuntu Linux(x86_64), Edge: Linux(amd64 · arm64)"
 ---
 ## 제품 개요
 

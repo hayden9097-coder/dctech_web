@@ -5,8 +5,8 @@
     "lead": "야누스 시스템은 산업 현장의 장비·센서·카메라 데이터를 수집하고 저장해, 원하는 관제 화면과 상태감시로 연결하는 산업 데이터 플랫폼입니다.",
     "img": {
       "file": "ui-studio-theme-catalog",
-      "alt": "Janus UI Studio 테마 카탈로그 화면 — 같은 관제 화면을 정밀 제도, 관제실 그래파이트, 블루프린트 그리드 등 여러 테마로 미리 보는 목록",
-      "caption": "UI Studio 테마 카탈로그 — 같은 관제 화면을 현장 환경에 맞는 테마로 바꿔 봅니다.",
+      "alt": "Janus UI Studio 테마 카탈로그 화면: 같은 관제 화면을 정밀 제도, 관제실 그래파이트, 블루프린트 그리드 등 여러 테마로 미리 보는 목록",
+      "caption": "UI Studio 테마 카탈로그: 같은 관제 화면을 현장 환경에 맞는 테마로 바꿔 봅니다.",
       "w": 554,
       "h": 542,
       "srcset": false
@@ -86,16 +86,16 @@
     "images": [
       {
         "file": "edge-field-test",
-        "alt": "Janus Edge 콘솔 장비 시험 화면 — Modbus Unit ID 찾기 도구에서 연결 방식, 장비 주소, TCP 포트, Unit ID 범위, 레지스터 영역을 입력하는 읽기 전용 시험 양식",
-        "caption": "Edge 콘솔 장비 시험 — Central 없이 현장에서 장비 응답을 읽어 봅니다(장비에 쓰지 않음).",
+        "alt": "Janus Edge 콘솔 장비 시험 화면: Modbus Unit ID 찾기 도구에서 연결 방식, 장비 주소, TCP 포트, Unit ID 범위, 레지스터 영역을 입력하는 읽기 전용 시험 양식",
+        "caption": "Edge 콘솔 장비 시험: Central 없이 현장에서 장비 응답을 읽어 봅니다(장비에 쓰지 않음).",
         "w": 1145,
         "h": 472,
         "srcset": true
       },
       {
         "file": "edge-setup",
-        "alt": "Janus Edge 콘솔 초기 설정 단계 목록 — 시작, 로컬 관리자, 시스템·시각, 네트워크 상태, Central, CA 인증서, 게이트웨이 등록, 연결 시험, 초기 설정 수신, 완료의 10단계",
-        "caption": "Edge 콘솔 초기 설정 — 새 Edge를 10단계로 Central에 연결합니다.",
+        "alt": "Janus Edge 콘솔 초기 설정 단계 목록: 시작, 로컬 관리자, 시스템·시각, 네트워크 상태, Central, CA 인증서, 게이트웨이 등록, 연결 시험, 초기 설정 수신, 완료의 10단계",
+        "caption": "Edge 콘솔 초기 설정: 새 Edge를 10단계로 Central에 연결합니다.",
         "w": 678,
         "h": 293,
         "srcset": false
@@ -125,8 +125,8 @@
     ],
     "image": {
       "file": "protocol-studio-wizard",
-      "alt": "Janus Protocol Studio 소스 마법사 화면 — 왼쪽에 원본 유형부터 저장·배포까지의 단계 목록, 오른쪽에 직렬 장치, 네트워크 장치(TCP/UDP), OPC UA 서버, MQTT 브로커, HTTP/API 폴링, LoRa 무선 모듈 원본 유형 카드",
-      "caption": "Protocol Studio 소스 마법사 — 어떤 장치에서 데이터를 가져올지 고르는 첫 단계",
+      "alt": "Janus Protocol Studio 소스 마법사 화면: 왼쪽에 원본 유형부터 저장·배포까지의 단계 목록, 오른쪽에 직렬 장치, 네트워크 장치(TCP/UDP), OPC UA 서버, MQTT 브로커, HTTP/API 폴링, LoRa 무선 모듈 원본 유형 카드",
+      "caption": "Protocol Studio 소스 마법사: 어떤 장치에서 데이터를 가져올지 고르는 첫 단계",
       "w": 1128,
       "h": 364,
       "srcset": true
@@ -183,7 +183,7 @@
         "w": 282,
         "h": 326,
         "srcset": false,
-        "alt": "Janus UI Studio 위젯 목록의 값·상태 분류 — 알람 배너, 알람 카운터, 설비 상태, 데이터 품질, 게이트웨이 상태, 게이지, KPI 목표, OEE, 상태 램프, 값",
+        "alt": "Janus UI Studio 위젯 목록의 값·상태 분류: 알람 배너, 알람 카운터, 설비 상태, 데이터 품질, 게이트웨이 상태, 게이지, KPI 목표, OEE, 상태 램프, 값",
         "caption": "값 · 상태 위젯"
       },
       {
@@ -191,7 +191,7 @@
         "w": 282,
         "h": 324,
         "srcset": false,
-        "alt": "Janus UI Studio 위젯 목록의 차트 분류 — 막대 차트, 상태 분포, 히트맵, 히스토그램·SPC, 다중 펜 트렌드, 파이·도넛, 흐름도(Sankey), 상태 타임라인, 트렌드, XY 산점도",
+        "alt": "Janus UI Studio 위젯 목록의 차트 분류: 막대 차트, 상태 분포, 히트맵, 히스토그램·SPC, 다중 펜 트렌드, 파이·도넛, 흐름도(Sankey), 상태 타임라인, 트렌드, XY 산점도",
         "caption": "차트 위젯"
       }
     ]
@@ -233,8 +233,8 @@
     ],
     "image": {
       "file": "edge-camera-test",
-      "alt": "Janus Edge 콘솔 카메라 시운전 순서 화면 — 카메라 추가, 검색·주소 입력, 접속 계정, 스트림 프로파일, 미리보기, 시험 녹화, 자산 연결, 작업 설정 저장, Central 승인의 9단계 표",
-      "caption": "Edge 콘솔 카메라 시험 — 연결 · 미리보기 · 녹화 순서로 현장에서 확인합니다.",
+      "alt": "Janus Edge 콘솔 카메라 시운전 순서 화면: 카메라 추가, 검색·주소 입력, 접속 계정, 스트림 프로파일, 미리보기, 시험 녹화, 자산 연결, 작업 설정 저장, Central 승인의 9단계 표",
+      "caption": "Edge 콘솔 카메라 시험: 연결 · 미리보기 · 녹화 순서로 현장에서 확인합니다.",
       "w": 910,
       "h": 470,
       "srcset": true
