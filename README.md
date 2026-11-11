@@ -22,6 +22,10 @@ Eleventy 정적 사이트 + Decap CMS 기반. 코드를 몰라도 관리자 페�
 
 제품 문서에 `template: assetpulse` 가 있으면 화면 중심의 전용 템플릿으로 표시됩니다(CMS 의 "상세 페이지 템플릿" 선택). 다른 제품은 기존 템플릿을 그대로 씁니다. 구조·수정 방법·시안 비교는 [docs/assetpulse-product-page.md](docs/assetpulse-product-page.md) 를 보세요.
 
+## Janus System 전용 상세 페이지
+
+제품 문서에 `template: janus` 가 있으면 Janus 전용 템플릿으로 표시됩니다. 전용 템플릿은 `src/_data/productTemplates.json` 에서 template 값으로 고릅니다. 제품 카드에 로고를 쓸 때는 CMS "대표 이미지 표시 방식"을 '로고'로 두세요. 자세한 내용은 [docs/JANUS-PRODUCT-PAGE.md](docs/JANUS-PRODUCT-PAGE.md) 를 보세요.
+
 ## 로컬에서 확인하기
 
 ```bash
