@@ -125,15 +125,7 @@ title: 홈
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for item in collections.products | limit(3) %}
       <a href="{{ item.url }}" class="card-hover block bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-        {% if item.data.image %}
-        <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
-          <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="w-full h-full object-cover">
-        </div>
-        {% else %}
-        <div class="aspect-[4/3] bg-gradient-to-br from-navy-900 to-navy-700 flex items-center justify-center">
-          <svg class="w-14 h-14 text-techblue-400/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-        </div>
-        {% endif %}
+        {% include "product-card-media.njk" %}
         <div class="p-6">
           {% if item.data.category %}
           <span class="inline-block text-xs font-bold text-techblue-500 bg-techblue-50 rounded-full px-3 py-1 mb-3">{{ item.data.category }}</span>

@@ -118,7 +118,8 @@ collections:
         options:
           - { label: "기본 템플릿", value: "default" }
           - { label: "AssetPulse 전용 템플릿", value: "assetpulse" }
-        hint: "대부분의 제품은 '기본 템플릿'입니다. AssetPulse 제품만 '전용 템플릿'을 선택하면 화면 중심의 전용 상세 페이지로 표시됩니다."
+          - { label: "Janus System 전용 템플릿", value: "janus" }
+        hint: "대부분의 제품은 '기본 템플릿'입니다. AssetPulse·Janus System 제품만 각자의 '전용 템플릿'을 선택하면 화면 중심의 전용 상세 페이지로 표시됩니다."
 
       - label: "표시 순서"
         name: "order"
@@ -137,6 +138,16 @@ collections:
         widget: "image"
         required: false
         hint: "선택 사항입니다. 넣지 않으면 기본 아이콘이 표시됩니다. 가로형 사진(권장 1200×900)을 사용하세요."
+
+      - label: "대표 이미지 표시 방식"
+        name: "image_fit"
+        widget: "select"
+        required: false
+        default: "cover"
+        options:
+          - { label: "사진 — 카드 영역을 꽉 채움(가장자리가 잘릴 수 있음)", value: "cover" }
+          - { label: "로고 — 흰 바탕에 여백을 두고 전체 표시", value: "contain" }
+        hint: "제품 로고를 대표 이미지로 쓸 때는 '로고'를 선택하세요. 잘리지 않고 카드 가운데에 표시됩니다."
 
       - label: "주요 특징"
         name: "features"

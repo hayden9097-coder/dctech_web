@@ -1,0 +1,17 @@
+{# 제품 카드의 대표 이미지 영역(제품 목록·홈 공통). item = 제품 컬렉션 항목.
+   - 대표 이미지가 있고 CMS "대표 이미지 표시 방식"이 contain(로고)이면: 흰 바탕에 여백을 두고 이미지 전체를 가운데 표시(잘리지 않음).
+   - 대표 이미지가 있고 그 외(없음/cover)면: 기존처럼 영역을 채운다(cover).
+   - 대표 이미지가 없을 때만 기본 상자 아이콘을 쓴다. -#}
+{% if item.data.image and item.data.image_fit == "contain" %}
+        <div class="aspect-[4/3] bg-white border-b border-slate-100 overflow-hidden flex items-center justify-center p-6 sm:p-8">
+          <img src="{{ item.data.image }}" alt="{{ item.data.title }}" loading="lazy" decoding="async" class="max-w-full max-h-full w-auto h-full object-contain">
+        </div>
+        {% elif item.data.image %}
+        <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+          <img src="{{ item.data.image }}" alt="{{ item.data.title }}" class="w-full h-full object-cover">
+        </div>
+        {% else %}
+        <div class="aspect-[4/3] bg-gradient-to-br from-navy-900 to-navy-700 flex items-center justify-center">
+          <svg class="w-14 h-14 text-techblue-400/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+        </div>
+        {% endif %}
