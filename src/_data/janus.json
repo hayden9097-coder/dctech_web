@@ -1,7 +1,7 @@
 {
   "_note": "Janus System 전용 상세 템플릿(src/_includes/product-janus.njk)의 고정 문구와 화면 이미지 설명. 제품명·분류·한줄 요약·대표 이미지·주요 특징·제품 사양·카탈로그 PDF·상세 설명은 CMS 제품 문서(src/products/janus-system.md)에서 온다. 문구 근거와 구현 상태는 docs/JANUS-PRODUCT-PAGE.md 의 Fact-check 표.",
   "hero": {
-    "headline": "현장 데이터부터 관제 화면까지, 하나의 플랫폼으로",
+    "headline": "산업 데이터를 하나의 플랫폼으로 연결하세요",
     "lead": "야누스 시스템은 산업 현장의 장비·센서·카메라 데이터를 수집하고 저장해, 원하는 관제 화면과 상태감시로 연결하는 산업 데이터 플랫폼입니다.",
     "img": {
       "file": "ui-studio-theme-catalog",
@@ -177,14 +177,24 @@
       "테마",
       "게시 · 버전 관리"
     ],
-    "image": {
-      "file": "ui-studio-widgets",
-      "alt": "Janus UI Studio 위젯 목록 — 값·상태, 차트, 표, 텍스트·미디어 분류 아래 알람 배너, 게이지, KPI 목표, OEE, 트렌드, 히트맵, 흐름도(Sankey), 알람 표, 운전일지, 카메라 그리드, 3D 모델 등",
-      "caption": "UI Studio 위젯 목록",
-      "w": 282,
-      "h": 900,
-      "srcset": false
-    }
+    "images": [
+      {
+        "file": "ui-studio-widgets-value",
+        "w": 282,
+        "h": 326,
+        "srcset": false,
+        "alt": "Janus UI Studio 위젯 목록의 값·상태 분류 — 알람 배너, 알람 카운터, 설비 상태, 데이터 품질, 게이트웨이 상태, 게이지, KPI 목표, OEE, 상태 램프, 값",
+        "caption": "값 · 상태 위젯"
+      },
+      {
+        "file": "ui-studio-widgets-chart",
+        "w": 282,
+        "h": 324,
+        "srcset": false,
+        "alt": "Janus UI Studio 위젯 목록의 차트 분류 — 막대 차트, 상태 분포, 히트맵, 히스토그램·SPC, 다중 펜 트렌드, 파이·도넛, 흐름도(Sankey), 상태 타임라인, 트렌드, XY 산점도",
+        "caption": "차트 위젯"
+      }
+    ]
   },
   "condition": {
     "title": "상태감시와 알람을 같은 데이터 위에서",

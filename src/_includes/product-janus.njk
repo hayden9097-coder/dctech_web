@@ -25,17 +25,15 @@
     </a>
     <div class="mt-8 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
       <div class="lg:col-span-7">
-        <div class="flex items-center gap-4">
-          {% if image %}<img src="{{ image }}" alt="{{ title }} 로고" width="80" height="80" class="h-20 w-20 rounded-xl bg-white object-contain p-1.5 shrink-0">{% endif %}
-          <p class="text-white font-bold text-lg leading-snug break-keep">{{ title }}{% if category %}<span class="block text-sm font-medium text-slate-300 mt-0.5">{{ category }}</span>{% endif %}</p>
-        </div>
-        <h1 class="mt-8 text-4xl sm:text-5xl lg:text-[52px] xl:text-[56px] font-extrabold text-white leading-[1.15] tracking-[-0.02em] break-keep">{{ jn.hero.headline }}</h1>
+        {% if image %}<img src="{{ image }}" alt="{{ title }} 로고" width="88" height="88" class="h-[88px] w-[88px] rounded-xl bg-white object-contain p-1.5">{% endif %}
+        <h1 class="mt-8 text-[30px] sm:text-5xl lg:text-[52px] xl:text-[56px] font-extrabold text-white leading-[1.15] tracking-[-0.02em] break-keep">{{ jn.hero.headline }}</h1>
         <p class="mt-6 text-lg text-slate-300 leading-relaxed break-keep max-w-2xl">{{ jn.hero.lead }}</p>
         <div class="mt-8 flex flex-wrap gap-3">
           {% if brochure %}<a href="{{ brochure }}" download class="{{ btn }}">제품 소개서 다운로드</a>{% endif %}
           <a href="/contact/" class="{{ btn if not brochure else btnLine }}">문의하기</a>
           <a href="#architecture" class="{{ btnLine }}">시스템 구성 보기</a>
         </div>
+        <p class="mt-8 text-slate-300 break-keep"><strong class="font-bold text-white">{{ title }}</strong>{% if category %} · {{ category }}{% endif %}</p>
       </div>
       <div class="lg:col-span-5 [&_figcaption]:text-slate-300">{{ shot(jn.hero.img, true) }}</div>
     </div>
@@ -74,7 +72,7 @@
       {% for g in jn.collect.groups %}
       <div class="bg-white rounded-xl p-6">
         <h3 class="font-bold text-navy-900 break-keep">{{ g.title }}</h3>
-        <ul class="mt-3 space-y-1.5 text-slate-700">{% for i in g.items %}<li class="flex gap-2 break-keep">{{ check() }}{{ i }}</li>{% endfor %}</ul>
+        <ul class="mt-3 space-y-1.5 text-lg text-navy-900 font-semibold">{% for i in g.items %}<li class="break-keep">{{ i }}</li>{% endfor %}</ul>
       </div>
       {% endfor %}
     </div>
@@ -130,9 +128,9 @@
       <h2 class="{{ h2 }}">{{ jn.historian.title }}</h2>
       <p class="mt-4 text-slate-700 leading-relaxed break-keep">{{ jn.historian.text }}</p>
     </div>
-    <dl class="lg:col-span-7 bg-white rounded-xl divide-y divide-slate-100">
+    <dl class="lg:col-span-7 grid gap-1">
       {% for r in jn.historian.rows %}
-      <div class="grid sm:grid-cols-3 gap-1 sm:gap-6 px-6 py-4"><dt class="font-bold text-navy-900 break-keep">{{ r.title }}</dt><dd class="sm:col-span-2 text-slate-700 break-keep">{{ r.text }}</dd></div>
+      <div class="bg-white rounded-lg grid sm:grid-cols-3 gap-1 sm:gap-6 px-6 py-4"><dt class="font-bold text-navy-900 break-keep">{{ r.title }}</dt><dd class="sm:col-span-2 text-slate-700 break-keep">{{ r.text }}</dd></div>
       {% endfor %}
     </dl>
   </div>
@@ -140,7 +138,7 @@
 
 {# ───── UI Studio ───── #}
 <section id="ui-studio" class="bg-white py-16 md:py-24">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
     <div class="lg:col-span-8">
       <h2 class="{{ h2 }}">{{ jn.ui.title }}</h2>
       <p class="mt-4 text-slate-700 leading-relaxed break-keep max-w-2xl">{{ jn.ui.text }}</p>
@@ -148,7 +146,9 @@
         {% for i in jn.ui.items %}<li class="bg-techblue-50 text-navy-900 rounded-lg px-4 py-3 font-semibold break-keep">{{ i }}</li>{% endfor %}
       </ul>
     </div>
-    <div class="lg:col-span-4 max-w-[320px] w-full mx-auto lg:mx-0">{{ shot(jn.ui.image) }}</div>
+    <div class="lg:col-span-4 grid grid-cols-2 gap-4 max-w-md">
+      {% for img in jn.ui.images %}{{ shot(img) }}{% endfor %}
+    </div>
   </div>
 </section>
 
@@ -244,9 +244,9 @@
 <section id="deployment" class="bg-slate-50 py-16 md:py-24">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <h2 class="{{ h2 }}">{{ jn.deploy.title }}</h2>
-    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
       {% for d in jn.deploy.items %}
-      <div class="bg-white rounded-xl p-6"><h3 class="font-bold text-navy-900 text-lg break-keep">{{ d.title }}</h3><p class="mt-2 text-slate-700 leading-relaxed break-keep">{{ d.text }}</p></div>
+      <div class="border-t-2 border-navy-900 pt-4"><h3 class="font-bold text-navy-900 text-lg break-keep">{{ d.title }}</h3><p class="mt-2 text-slate-700 leading-relaxed break-keep">{{ d.text }}</p></div>
       {% endfor %}
     </div>
     <h3 class="mt-14 text-xl md:text-2xl font-extrabold text-navy-900 break-keep">{{ jn.deploy.fields_title }}</h3>
