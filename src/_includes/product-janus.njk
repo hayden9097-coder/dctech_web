@@ -1,0 +1,302 @@
+{# Janus System 전용 제품 상세 템플릿 — 트리거: 제품 문서의 `template: janus` (src/_data/productTemplates.json).
+   CMS 필드(제품명·분류·한줄 요약·대표 이미지·주요 특징·제품 사양·카탈로그 PDF·상세 설명)를 모두 그대로 쓴다.
+   고정 문구는 src/_data/janus.json, 실제 Janus 화면은 public/images/janus/, 근거·구현 상태는 docs/JANUS-PRODUCT-PAGE.md. #}
+{% macro shot(img, dark) %}
+<figure>
+  <a href="/images/janus/{{ img.file }}.webp" target="_blank" rel="noopener" data-ui class="block rounded-xl overflow-hidden border {{ 'border-white/15' if dark else 'border-slate-200' }} bg-white" aria-label="{{ img.alt }} (크게 보기, 새 탭)">
+    <img src="/images/janus/{{ img.file }}.webp"{% if img.srcset %} srcset="/images/janus/{{ img.file }}-800.webp 800w, /images/janus/{{ img.file }}.webp {{ img.w }}w" sizes="(min-width: 1280px) 1150px, 100vw"{% endif %} width="{{ img.w }}" height="{{ img.h }}" alt="{{ img.alt }}" loading="lazy" decoding="async" class="block w-full h-auto">
+  </a>
+  {% if img.caption %}<figcaption class="mt-3 text-sm {{ 'text-slate-300' if dark else 'text-slate-600' }} break-keep">{{ img.caption }}</figcaption>{% endif %}
+</figure>
+{% endmacro %}
+{% macro check() %}<svg class="w-4 h-4 mt-1 text-techblue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>{% endmacro %}
+{% set jn = janus %}
+{% set h2 = "text-2xl md:text-[32px] font-extrabold text-navy-900 leading-snug break-keep" %}
+{% set h2w = "text-2xl md:text-[32px] font-extrabold text-white leading-snug break-keep" %}
+{% set btn = "inline-flex items-center justify-center bg-[#1d63d8] hover:bg-techblue-500 text-white font-bold px-6 py-3.5 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" %}
+{% set btnLine = "inline-flex items-center justify-center border-2 border-white/40 hover:bg-white/10 text-white font-bold px-6 py-3 rounded-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" %}
+
+{# ───── 히어로: 단색 네이비, 공식 로고 + 제목 + 실제 UI Studio 화면 ───── #}
+<section class="bg-navy-900 pt-10 pb-16 md:pt-14 md:pb-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <a href="/products/" class="inline-flex items-center gap-1.5 text-sm text-techblue-300 hover:text-white transition-colors">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      제품 목록으로
+    </a>
+    <div class="mt-8 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div class="lg:col-span-7">
+        <div class="flex items-center gap-4">
+          {% if image %}<img src="{{ image }}" alt="{{ title }} 로고" width="80" height="80" class="h-20 w-20 rounded-xl bg-white object-contain p-1.5 shrink-0">{% endif %}
+          <p class="text-white font-bold text-lg leading-snug break-keep">{{ title }}{% if category %}<span class="block text-sm font-medium text-slate-300 mt-0.5">{{ category }}</span>{% endif %}</p>
+        </div>
+        <h1 class="mt-8 text-4xl sm:text-5xl lg:text-[52px] xl:text-[56px] font-extrabold text-white leading-[1.15] tracking-[-0.02em] break-keep">{{ jn.hero.headline }}</h1>
+        <p class="mt-6 text-lg text-slate-300 leading-relaxed break-keep max-w-2xl">{{ jn.hero.lead }}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {% if brochure %}<a href="{{ brochure }}" download class="{{ btn }}">제품 소개서 다운로드</a>{% endif %}
+          <a href="/contact/" class="{{ btn if not brochure else btnLine }}">문의하기</a>
+          <a href="#architecture" class="{{ btnLine }}">시스템 구성 보기</a>
+        </div>
+      </div>
+      <div class="lg:col-span-5 [&_figcaption]:text-slate-300">{{ shot(jn.hero.img, true) }}</div>
+    </div>
+  </div>
+</section>
+
+{# ───── 플랫폼 가치: CMS "주요 특징" ───── #}
+{% if features and features | length %}
+<section id="features" class="bg-white py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end">
+      <h2 class="lg:col-span-6 {{ h2 }}">하나의 플랫폼에서 하는 일</h2>
+      <p class="lg:col-span-6 text-slate-700 leading-relaxed break-keep">{{ summary }}</p>
+    </div>
+    <ul class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
+      {% for f in features | featureItems %}
+      <li class="border-t-2 border-navy-900 pt-4">
+        <p class="font-bold text-navy-900 text-lg leading-snug break-keep">{{ f.title }}</p>
+        {% if f.detail %}<p class="mt-2 text-slate-700 leading-relaxed break-keep">{{ f.detail }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+{# ───── 산업 데이터 수집 ───── #}
+<section id="collect" class="bg-slate-50 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-10 lg:gap-12">
+    <div class="lg:col-span-4">
+      <h2 class="{{ h2 }}">{{ jn.collect.title }}</h2>
+      <p class="mt-4 text-slate-700 leading-relaxed break-keep">{{ jn.collect.text }}</p>
+      <p class="mt-4 text-sm text-slate-600 break-keep">{{ jn.collect.note }}</p>
+    </div>
+    <div class="lg:col-span-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {% for g in jn.collect.groups %}
+      <div class="bg-white rounded-xl p-6">
+        <h3 class="font-bold text-navy-900 break-keep">{{ g.title }}</h3>
+        <ul class="mt-3 space-y-1.5 text-slate-700">{% for i in g.items %}<li class="flex gap-2 break-keep">{{ check() }}{{ i }}</li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ───── Janus Edge ───── #}
+<section id="edge" class="bg-navy-900 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12">
+      <div class="lg:col-span-5">
+        <h2 class="{{ h2w }}">{{ jn.edge.title }}</h2>
+        <p class="mt-4 text-slate-300 leading-relaxed break-keep">{{ jn.edge.text }}</p>
+        <ol class="mt-8 flex flex-wrap items-center gap-2" aria-label="Edge 데이터 흐름">
+          {% for step in jn.edge.flow %}
+          <li class="flex items-center gap-2"><span class="{{ 'bg-[#1d63d8]' if loop.index == 2 else 'bg-white/10' }} text-white rounded-lg px-4 py-2.5 text-sm font-semibold">{{ step }}</span>{% if not loop.last %}<span class="text-techblue-300" aria-hidden="true">→</span>{% endif %}</li>
+          {% endfor %}
+        </ol>
+      </div>
+      <dl class="lg:col-span-7 grid sm:grid-cols-2 gap-x-8 gap-y-6">
+        {% for b in jn.edge.bullets %}
+        <div><dt class="font-bold text-white text-lg break-keep">{{ b.title }}</dt><dd class="mt-1.5 text-slate-300 leading-relaxed break-keep">{{ b.text }}</dd></div>
+        {% endfor %}
+      </dl>
+    </div>
+    <div class="mt-12 grid lg:grid-cols-12 gap-6 items-start">
+      <div class="lg:col-span-7">{{ shot(jn.edge.images[0], true) }}</div>
+      <div class="lg:col-span-5">{{ shot(jn.edge.images[1], true) }}</div>
+    </div>
+  </div>
+</section>
+
+{# ───── Protocol Studio ───── #}
+<section id="protocol-studio" class="bg-white py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <h2 class="{{ h2 }}">{{ jn.studio.title }}</h2>
+      <p class="mt-4 text-slate-700 leading-relaxed break-keep">{{ jn.studio.text }}</p>
+    </div>
+    <ol class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
+      {% for s in jn.studio.steps %}
+      <li class="border-t-2 border-[#1d63d8] pt-4"><p class="font-bold text-navy-900 break-keep">{{ s.title }}</p><p class="mt-1.5 text-slate-700 leading-relaxed break-keep">{{ s.text }}</p></li>
+      {% endfor %}
+    </ol>
+    <div class="mt-12">{{ shot(jn.studio.image) }}</div>
+  </div>
+</section>
+
+{# ───── Historian ───── #}
+<section id="historian" class="bg-slate-50 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-10 lg:gap-12">
+    <div class="lg:col-span-5">
+      <h2 class="{{ h2 }}">{{ jn.historian.title }}</h2>
+      <p class="mt-4 text-slate-700 leading-relaxed break-keep">{{ jn.historian.text }}</p>
+    </div>
+    <dl class="lg:col-span-7 bg-white rounded-xl divide-y divide-slate-100">
+      {% for r in jn.historian.rows %}
+      <div class="grid sm:grid-cols-3 gap-1 sm:gap-6 px-6 py-4"><dt class="font-bold text-navy-900 break-keep">{{ r.title }}</dt><dd class="sm:col-span-2 text-slate-700 break-keep">{{ r.text }}</dd></div>
+      {% endfor %}
+    </dl>
+  </div>
+</section>
+
+{# ───── UI Studio ───── #}
+<section id="ui-studio" class="bg-white py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+    <div class="lg:col-span-8">
+      <h2 class="{{ h2 }}">{{ jn.ui.title }}</h2>
+      <p class="mt-4 text-slate-700 leading-relaxed break-keep max-w-2xl">{{ jn.ui.text }}</p>
+      <ul class="mt-8 grid sm:grid-cols-2 gap-3" aria-label="UI Studio 기능">
+        {% for i in jn.ui.items %}<li class="bg-techblue-50 text-navy-900 rounded-lg px-4 py-3 font-semibold break-keep">{{ i }}</li>{% endfor %}
+      </ul>
+    </div>
+    <div class="lg:col-span-4 max-w-[320px] w-full mx-auto lg:mx-0">{{ shot(jn.ui.image) }}</div>
+  </div>
+</section>
+
+{# ───── 상태감시 · 알람 ───── #}
+<section id="condition" class="bg-slate-50 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-6 lg:gap-12 items-end">
+      <h2 class="lg:col-span-6 {{ h2 }}">{{ jn.condition.title }}</h2>
+      <p class="lg:col-span-6 text-slate-700 leading-relaxed break-keep">{{ jn.condition.lead }}</p>
+    </div>
+    <div class="mt-10 grid md:grid-cols-2 gap-4">
+      {% for b in jn.condition.blocks %}
+      <div class="bg-white rounded-xl p-6 md:p-8">
+        <h3 class="text-xl font-bold text-navy-900 break-keep">{{ b.title }}</h3>
+        <ul class="mt-4 space-y-2 text-slate-700">{% for i in b.items %}<li class="flex gap-2 break-keep">{{ check() }}{{ i }}</li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{# ───── 미디어 ───── #}
+<section id="media" class="bg-white py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+    <div class="lg:col-span-5">
+      <h2 class="{{ h2 }}">{{ jn.media.title }}</h2>
+      <p class="mt-4 text-slate-700 leading-relaxed break-keep">{{ jn.media.text }}</p>
+      <ul class="mt-6 space-y-2 text-slate-700">{% for i in jn.media.items %}<li class="flex gap-2 break-keep">{{ check() }}{{ i }}</li>{% endfor %}</ul>
+    </div>
+    <div class="lg:col-span-7">{{ shot(jn.media.image) }}</div>
+  </div>
+</section>
+
+{# ───── 공간 · Physical AI (확장 방향: 구현 상태에 맞춘 표현) ───── #}
+<section id="physical-ai" class="bg-navy-900 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <h2 class="{{ h2w }}">{{ jn.spatial.title }}</h2>
+      <p class="mt-4 text-slate-300 leading-relaxed break-keep">{{ jn.spatial.text }}</p>
+    </div>
+    <ol class="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" aria-label="Physical AI 확장 흐름">
+      {% for f in jn.spatial.flow %}
+      <li class="bg-white/10 rounded-lg px-4 py-4"><p class="font-bold text-white break-keep">{{ f.title }}</p><p class="mt-1 text-sm text-slate-300 break-keep">{{ f.text }}</p></li>
+      {% endfor %}
+    </ol>
+    <dl class="mt-10 grid md:grid-cols-3 gap-x-8 gap-y-6">
+      {% for i in jn.spatial.items %}
+      <div><dt class="font-bold text-white text-lg break-keep">{{ i.title }}</dt><dd class="mt-1.5 text-slate-300 leading-relaxed break-keep">{{ i.text }}</dd></div>
+      {% endfor %}
+    </dl>
+    <p class="mt-10 text-sm text-slate-300 break-keep max-w-3xl">{{ jn.spatial.note }}</p>
+  </div>
+</section>
+
+{# ───── 시스템 구성 (FIELD / EDGE / CENTRAL / CLIENT) ───── #}
+<section id="architecture" class="bg-white py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <h2 class="{{ h2 }}">{{ jn.arch.title }}</h2>
+    <figure class="mt-10">
+      <svg class="hidden md:block w-full h-auto" viewBox="0 0 1200 380" role="img" aria-labelledby="jn-arch-title jn-arch-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="jn-arch-title">Janus System 구성도</title>
+        <desc id="jn-arch-desc">{% for l in jn.arch.layers %}{{ l.key }} {{ l.title }}: {{ l.items | join(", ") }}. {% endfor %}데이터는 현장에서 Edge, Central을 거쳐 웹 브라우저 화면으로 전달됩니다.</desc>
+        <defs><marker id="jn-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1d63d8"/></marker></defs>
+        {% for l in jn.arch.layers %}
+        {% set x = (loop.index0 * 300) + 10 %}
+        <g>
+          <rect x="{{ x }}" y="0" width="250" height="380" rx="14" fill="{{ '#0a1730' if l.key == 'CENTRAL' else ('#eff6ff' if l.key == 'EDGE' else '#f1f5f9') }}"/>
+          <text x="{{ x + 24 }}" y="44" font-size="15" font-weight="700" fill="{{ '#8ec0ff' if l.key == 'CENTRAL' else '#1d63d8' }}">{{ l.key }}</text>
+          <text x="{{ x + 24 }}" y="78" font-size="22" font-weight="800" fill="{{ '#ffffff' if l.key == 'CENTRAL' else '#0a1730' }}">{{ l.title }}</text>
+          {% for i in l.items %}
+          <rect x="{{ x + 20 }}" y="{{ 110 + loop.index0 * 84 }}" width="210" height="66" rx="10" fill="{{ '#153161' if l.key == 'CENTRAL' else '#ffffff' }}"/>
+          <text x="{{ x + 125 }}" y="{{ 149 + loop.index0 * 84 }}" font-size="17" font-weight="600" text-anchor="middle" fill="{{ '#ffffff' if l.key == 'CENTRAL' else '#0a1730' }}">{{ i }}</text>
+          {% endfor %}
+        </g>
+        {% if not loop.last %}<line x1="{{ x + 254 }}" y1="190" x2="{{ x + 304 }}" y2="190" stroke="#1d63d8" stroke-width="3" marker-end="url(#jn-arrow)"/>{% endif %}
+        {% endfor %}
+      </svg>
+      <ol class="md:hidden space-y-3" aria-label="Janus System 구성">
+        {% for l in jn.arch.layers %}
+        <li class="rounded-xl p-5 {{ 'bg-navy-900' if l.key == 'CENTRAL' else ('bg-techblue-50' if l.key == 'EDGE' else 'bg-slate-100') }}">
+          <p class="text-sm font-bold {{ 'text-techblue-300' if l.key == 'CENTRAL' else 'text-[#1d63d8]' }}">{{ l.key }}</p>
+          <p class="mt-0.5 text-lg font-extrabold {{ 'text-white' if l.key == 'CENTRAL' else 'text-navy-900' }}">{{ l.title }}</p>
+          <p class="mt-1 {{ 'text-slate-300' if l.key == 'CENTRAL' else 'text-slate-700' }} break-keep">{{ l.items | join(" · ") }}</p>
+        </li>
+        {% if not loop.last %}<li class="text-center text-[#1d63d8] text-xl leading-none" aria-hidden="true">↓</li>{% endif %}
+        {% endfor %}
+      </ol>
+    </figure>
+  </div>
+</section>
+
+{# ───── 도입 형태 · 적용 분야 ───── #}
+<section id="deployment" class="bg-slate-50 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <h2 class="{{ h2 }}">{{ jn.deploy.title }}</h2>
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {% for d in jn.deploy.items %}
+      <div class="bg-white rounded-xl p-6"><h3 class="font-bold text-navy-900 text-lg break-keep">{{ d.title }}</h3><p class="mt-2 text-slate-700 leading-relaxed break-keep">{{ d.text }}</p></div>
+      {% endfor %}
+    </div>
+    <h3 class="mt-14 text-xl md:text-2xl font-extrabold text-navy-900 break-keep">{{ jn.deploy.fields_title }}</h3>
+    <ul class="mt-6 flex flex-wrap gap-3">
+      {% for f in jn.deploy.fields %}<li class="bg-white text-navy-900 rounded-lg px-4 py-2.5 font-semibold break-keep">{{ f }}</li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+{# ───── 제품 사양 (CMS 사양 표) ───── #}
+<section id="specs" class="bg-white py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-4"><h2 class="{{ h2 }}">제품 사양</h2></div>
+    <div class="lg:col-span-8">
+      <table class="w-full text-[15px]">
+        <caption class="sr-only">{{ title }} 제품 사양</caption>
+        <tbody>
+          <tr class="border-t border-slate-200"><th scope="row" class="py-4 pr-6 text-left font-medium text-slate-600 w-28 sm:w-40 align-top">제품명</th><td class="py-4 text-navy-900 font-medium break-keep">{{ title }}</td></tr>
+          {% if category %}<tr class="border-t border-slate-200"><th scope="row" class="py-4 pr-6 text-left font-medium text-slate-600 align-top">제품 분류</th><td class="py-4 text-navy-900 font-medium break-keep">{{ category }}</td></tr>{% endif %}
+          {% for sp in specs %}
+          <tr class="border-t border-slate-200"><th scope="row" class="py-4 pr-6 text-left font-medium text-slate-600 align-top break-keep">{{ sp.label }}</th><td class="py-4 text-navy-900 font-medium break-keep">{{ sp.value }}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{# ───── 상세 제품 소개 (CMS 상세 설명) ───── #}
+<section id="detail" class="bg-slate-50 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-4"><h2 class="{{ h2 }}">상세 제품 소개</h2></div>
+    <div class="lg:col-span-8">
+      <article class="prose prose-slate max-w-2xl prose-h2:text-xl prose-h2:font-bold prose-h2:text-navy-900 prose-h2:mt-8 prose-h2:mb-3 prose-p:text-slate-700 prose-p:leading-relaxed prose-li:text-slate-700 break-keep">
+        {{ content | safe }}
+      </article>
+    </div>
+  </div>
+</section>
+
+{# ───── 소개서 · 문의 ───── #}
+<section class="bg-navy-900 py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+    <div>
+      <h2 class="{{ h2w }}">{{ jn.cta.title }}</h2>
+      <p class="mt-2 text-slate-300 break-keep">{{ jn.cta.text }}</p>
+    </div>
+    <div class="flex flex-wrap gap-3 shrink-0">
+      {% if brochure %}<a href="{{ brochure }}" download class="{{ btn }}">제품 소개서 다운로드</a>{% endif %}
+      <a href="/contact/" class="{{ btn if not brochure else btnLine }}">문의하기</a>
+    </div>
+  </div>
+</section>
