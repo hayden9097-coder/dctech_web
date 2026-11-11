@@ -69,16 +69,16 @@ Janus System(야누스 시스템)은 수집·Edge·Historian·Studio·상태감�
 
 | 순서 | 섹션 (id) | 내용 | 데이터 |
 |---|---|---|---|
-| 1 | Hero | 로고 타일, h1, 소개 문장, CTA(소개서·문의·시스템 구성 보기), 제품명·분류, UI Studio 테마 카탈로그 실화면 | CMS: `image`, `title`, `category`, `brochure` / janus.json `hero` |
+| 1 | Hero | 로고 타일, h1, 소개 문장, CTA(소개서·문의·시스템 구성 보기), 제품명·분류, 그 아래 전체 폭 실제 관제 대시보드 화면(`hero.img.wide: true`; false 면 예전처럼 오른쪽 5칸) | CMS: `image`, `title`, `category`, `brochure` / janus.json `hero` |
 | 2 | 하나의 플랫폼에서 하는 일 (`#features`) | 8개 핵심 가치 | **CMS `features`** (`featureItems` 필터: " — " 앞 제목/뒤 설명) + CMS `summary` |
 | 3 | 수집 (`#collect`) | 프로토콜 5그룹 | janus.json `collect` |
 | 4 | Janus Edge (`#edge`) | 흐름(현장→Edge→Central), 4개 역할, Edge 콘솔 장비 시험·초기 설정 화면 | janus.json `edge` |
 | 5 | Protocol Studio (`#protocol-studio`) | 4단계 묶음 + 소스 마법사 화면 | janus.json `studio` |
-| 6 | Historian (`#historian`) | 원시값·계산값·현재값·추세·집계·이력 조회/내보내기 | janus.json `historian` |
-| 7 | UI Studio (`#ui-studio`) | 10개 기능 + 위젯 목록 화면 2장 | janus.json `ui` |
-| 8 | 상태감시·알람 (`#condition`) | 두 블록 | janus.json `condition` |
+| 6 | Historian (`#historian`) | 원시값·계산값·현재값·추세·집계·이력 조회/내보내기 + 다중 펜 추세 실화면(`historian.image`) | janus.json `historian` |
+| 7 | UI Studio (`#ui-studio`) | 10개 기능 + 테마 카탈로그(`ui.catalog`) + 위젯 목록 화면 2장 | janus.json `ui` |
+| 8 | 상태감시·알람 (`#condition`) | 두 블록, 블록마다 실화면(`blocks[].image`: 파형/FFT, 알람 현황) | janus.json `condition` |
 | 9 | 미디어 (`#media`) | 기능 목록 + Edge 콘솔 카메라 시험 화면 | janus.json `media` |
-| 10 | 공간·Physical AI (`#physical-ai`) | 감지→수집→분석→표시→판단→제어, 확장 구조/연동 기반 표현, 제어 범위 안내 | janus.json `spatial` |
+| 10 | 공간·Physical AI (`#physical-ai`) | 배치도 실화면(`spatial.image`) + 감지→수집→분석→표시→판단→제어, 확장 구조/연동 기반 표현, 제어 범위 안내 | janus.json `spatial` |
 | 11 | 시스템 구성 (`#architecture`) | FIELD / EDGE / CENTRAL / CLIENT SVG(데스크톱), 같은 내용의 세로 목록(모바일) | janus.json `arch` |
 | 12 | 도입 형태 (`#deployment`) | On-Premise · Edge+Central · 폐쇄망 · 모듈형, 적용 분야 | janus.json `deploy` |
 | 13 | 제품 사양 (`#specs`) | 제품명·분류 + 사양 표 | **CMS `title`, `category`, `specs`** |
@@ -104,12 +104,26 @@ Janus System(야누스 시스템)은 수집·Edge·Historian·Studio·상태감�
 | `edge-field-test.webp` (+`-800`) | Edge 콘솔 › 장비 시험(Modbus Unit ID 찾기, 읽기 전용) | 1145×472 | 임시 로컬 Edge 콘솔 |
 | `edge-setup.webp` | Edge 콘솔 › 초기 설정 10단계 | 678×293 | 임시 로컬 Edge 콘솔 |
 | `edge-camera-test.webp` (+`-800`) | Edge 콘솔 › 카메라 시험 › 카메라 시운전 순서 9단계 | 910×470 | 임시 로컬 Edge 콘솔 |
+| `dashboard-overview.webp` (+`-800`) — **히어로** | 사용자 화면(USER) › UI Studio 로 만든 앱 "1공장 설비 관제" › 설비 현황 페이지: 값 카드 3개·알람 카운터·베어링 진동 24시간 추세(주의선 4.5)·주의 설비·게이지·공급/환수 온도 추세·최근 알람. 왼쪽 앱 메뉴와 상단 셸은 잘라 냄 | 1600×1045 | 발표용 로컬 인스턴스 |
+| `historian-trend.webp` (+`-800`) — Historian | 같은 앱 › 추세 분석 페이지: 다중 펜 트렌드(2호기 베어링 진동·온도·모터 전류, 3축, 최근 24시간) + 24시간 평균·최소/최대·평균 온도·1시간 변화율 집계 카드 | 1600×879 | 발표용 로컬 인스턴스 |
+| `condition-fft.webp` (+`-800`) — 상태감시 블록 | 관리자 › 설비 상태감시 › 냉각수 순환펌프 2호기 › 신호 분석: 분석 완료 파형의 시간 파형 + FFT 스펙트럼 + 베어링 결함 주파수 표시선(6309 베어링) | 1100×1041 | 발표용 로컬 인스턴스 |
+| `alarm-list.webp` (+`-800`) — 알람 블록 | 관리자 › 알람 현황(열린 알람 전체): 발생·미확인 / 발생·확인됨(확인자·시각) / 복귀·미확인, 심각도, 태그, 유형(HI·HIHI·LO), 발생 값·시각. 왼쪽 관리 메뉴는 잘라 냄 | 1400×476 | 발표용 로컬 인스턴스 |
+| `spatial-map.webp` (+`-800`) — 공간·Physical AI | 사용자 화면 › 배치도 페이지: MAP_2D 위젯(공간 패키지, LOCAL_CARTESIAN 지도, 배경 타일 없음) 구역 7개·고정 설비 4대·지게차 1대 위치 + 주의 설비·알람 | 1600×870 | 발표용 로컬 인스턴스 |
+| `ui-studio-theme-catalog.webp` | (위치 이동) 히어로 → UI Studio 섹션 오른쪽 위 | 554×542 | 랩 Central |
 
 - 임시 로컬 Edge 콘솔: 이미 빌드된 `edge-console` 바이너리를 빈 상태 폴더(`~/.cache/janus-webshot/elc-state`)와 빈 루프백 포트(127.0.0.1:28697)로 띄우고, 부트스트랩 시험 계정으로 로그인해 캡처한 뒤 해당 PID 만 종료했다. 사용자의 Edge 콘솔(28643)과 랩 서비스는 건드리지 않았다.
 - 랩 Central 은 쓰기 요청(POST/PUT/PATCH/DELETE)을 막는 init 스크립트로 접속했고, 끝에 로그아웃했다. 프레젠테이션용 데이터는 만들지 않았다(아래 9절).
-- 최적화: WebP(q86–90), 넓은 이미지는 800w 변형 + `srcset/sizes`, 모든 화면에 `width/height`·`loading="lazy"`·`decoding="async"`. 페이지 이미지 합계 약 240KB.
+- 최적화: WebP(q84–90), 넓은 이미지는 800w 변형 + `srcset/sizes`, 모든 화면에 `width/height`·`loading="lazy"`·`decoding="async"`. 페이지 이미지 합계는 12절 참고.
 
-## 8. Fact-check (Janus 저장소 기준, 2026-11-11, HEAD 6b5e51ee / 릴리스 0.31.0)
+### 7-1. 발표용 데이터와 캡처 환경 (2026-11-11)
+
+- **어디서**: 랩(.88 Central·.86 Edge)과 사용자 서비스는 건드리지 않았다. Janus 저장소(HEAD 738f9c06, 릴리스 0.31.1)에서 바이너리만 `~/.cache/janus-present/bin` 으로 빌드하고(저장소 무변경), 웹 화면은 같은 0.31.1 릴리스의 `share/web` 사본을 썼다. 전용 DB 컨테이너 `janus-present-pg`(`timescale/timescaledb:2.30.1-pg18`, 루프백 임의 포트, 볼륨 `janus-present-pgdata`) + `cmd/migrate up` + Core(`JANUS_ENV=development`, 루프백 임의 포트). 작업이 끝난 뒤 컨테이너·볼륨·프로세스·비밀값 파일을 모두 지웠다.
+- **어떻게**: 모두 제품의 공개 API/화면으로 만들었다(DB 직접 수정 없음, 실 장비 쓰기·제어 명령·실 카메라 없음). 초기 설정 API로 관리자 생성(TOTP 2단계 인증 등록) → Admin API 로 사이트 "1공장", 구역 2, 설비 5(냉각수 순환펌프 1·2호기, 냉각탑 송풍기, 보일러 급수펌프, 지게차 1호), 단위 8, 태그 32 → 알람 규칙 17(HI·HIHI·LO) → 상태감시 측정 포인트 11, 베어링 6309 지정, 진동 파형 5건 업로드 → 제품의 상태감시 분석 작업기(릴리스 `share/calc`, 전용 CALC_SERVER 인스턴스 토큰)로 FFT·진단 → 공간 패키지 설치, 배치도(지도 1, 버전 승격, 구역 7, 설비 엔티티 4 + 지게차 엔티티 1, 속도 규칙 1) → UI Studio 앱 "1공장 설비 관제"(4페이지) 게시 → 사용자 계정 "현장 운전원"(USER 역할 + 1공장 접근).
+- **값**: Core 의 Standard Telemetry v1 수집 리스너(`/ingest/v1/telemetry`, 상태감시 CM-1 시험의 `cm-feed.py` 와 같은 경로)로 3일치 이력(60초, 최근 8시간은 10초) + 5초 주기 실시간 값을 보냈다. 값은 하루 부하 곡선 + 느린 변동 + 잡음 모델이고, 2호기 베어링 진동이 40시간에 걸쳐 오르는 이상 진행, 급수펌프 베어링 온도 상승, 일시 압력 저하·송풍기 진동 상승(발생 후 복귀)을 넣었다. 플래그 0(시뮬레이터 표시 없음)으로 보냈기 때문에 화면에 "시뮬레이터 데이터" 배지가 없다 — **실제 현장 값이 아니므로 페이지의 새 화면 캡션마다 "(소개용 예시 데이터)"를 붙였다.**
+- **왜 protosim/Direct runtime 이 아닌가**: protosim Modbus 는 삼각파 램프만 만들어 추세가 톱니 모양이 되고, `cmd/simulator` 는 SIMULATED 플래그가 붙어 화면에 시뮬레이터 배지·배너가 뜬다. 그래서 같은 수집 계약(Standard Telemetry v1)의 리스너 경로를 썼다.
+- **캡처**: agent-browser 전용 세션(`janus-present-shot` 사용자, `janus-present-admin` 관리자), 1440 CSS px · 2배율 · 라이트 테마. 로그인은 API 로 받은 세션 쿠키를 0600 파일로 넣었다(비밀번호를 명령줄에 쓰지 않음). 주소창·IP·포트·계정 아이디·토큰·`QA/test/sample/demo/temp/localhost` 문자열이 화면에 없음을 확인했다(표시되는 사용자 이름은 표시명 "현장 운전원"/"운영 관리자", 사이트는 "PLANT1 · 1공장").
+
+## 8. Fact-check (Janus 저장소 기준, 2026-11-11, HEAD 6b5e51ee / 릴리스 0.31.0; 화면 추가분은 HEAD 738f9c06 / 릴리스 0.31.1)
 
 내부 분류: IMPLEMENTED(소프트웨어 구현·시험 완료) / PARTIAL / PLANNED. 페이지에서는 IMPLEMENTED 만 "지원/제공/합니다"로 쓰고, PARTIAL·PLANNED 는 "확장 구조 / 연동 기반 / 확장할 수 있습니다"로 썼다. 주의: 모든 드라이버·장치 기능은 시뮬레이터 기준 검증이고 현장 장비 검증(Phase 8 HW)은 대기 중 — 그래서 "현장 검증 완료" 류 표현은 쓰지 않았다.
 
@@ -137,6 +151,8 @@ Janus System(야누스 시스템)은 수집·Edge·Historian·Studio·상태감�
 | 상태감시: 측정 포인트 판정·건전성·데이터 품질·파형·FFT·포락선·베어링 결함 주파수·보고서 | IMPLEMENTED(소프트웨어) | CM-REPORT, CM-B23-REPORT. 파형은 업로드 입력, 실시간 진동 센서 드라이버 없음 → "센서 실시간 파형" 표현 안 함 |
 | 미디어: RTSP·ONVIF·H.264/H.265 수집·녹화·HTTPS/RTSPS·스냅샷·이벤트 녹화·미디어 위젯 | IMPLEMENTED | CAMERA-DEPLOYMENT-REPORT(0.27.0). H.265 브라우저 재생은 환경 의존 → "재생 지원"을 따로 강조하지 않음 |
 | 공간·지도(지도·구역·이동 경로) | PARTIAL(시뮬레이터 E2E, 기본 미설치 패키지) | "확장 모듈"로 표현 |
+| 배치도 화면(MAP_2D: 구역·설비·이동 장비 위치) | IMPLEMENTED(소프트웨어, 공간 패키지 설치 시) | 발표용 인스턴스에서 패키지 설치 → 지도·버전 승격·구역·엔티티(태그 바인딩 위치)를 API 로 만들고 USER 화면에서 캡처. 캡션은 "확장 모듈"로 유지, 실 GPS/UWB 위치 장치 검증은 없음 |
+| 대시보드·다중 펜 추세·집계 카드·알람 현황·파형/FFT 화면 | IMPLEMENTED | 발표용 인스턴스(0.31.1 바이너리/웹)에서 실제 화면 캡처, 값은 소개용 예시 데이터(캡션 표기) |
 | LiDAR · Radar · 로봇 · AGV · 사람 위치 | PARTIAL(계약·시뮬레이터·2D 위젯) | "연동 기반", "확장할 수 있습니다" |
 | Physical AI 분석 | PLANNED | "향후 … 확장할 수 있습니다" |
 | 감독 제어(태그 쓰기: 권한·미리보기·확인) | IMPLEMENTED(시뮬레이터) | P0-1 보고서. 실 PLC 쓰기 미검증 → "감독 제어 범위"로만 표현 |
@@ -151,8 +167,10 @@ Janus System(야누스 시스템)은 수집·Edge·Historian·Studio·상태감�
 
 ## 9. 알려진 한계와 후속
 
-- **실화면 범위**: 랩 Central 의 데이터가 시험용 이름(QA·시뮬레이션·HWLAB)뿐이고 실시간 값이 없어, 대시보드·Historian 추세·상태감시·알람·지도 화면은 깨끗하게 캡처할 수 없었다. 이 섹션들은 구성도·표·목록으로 설명한다. 제품 UI/API 로 프레젠테이션 데이터(예: "제1공장" 사이트, 시뮬레이터 수집, UI Studio 앱)를 만들면 히어로를 실제 대시보드로, Historian·상태감시·미디어 섹션에 실화면을 넣을 수 있다(사용자 승인 후 별도 작업 권장).
-- 공간·지도 화면은 랩에서 패키지가 비활성이라 캡처하지 않았다.
+- **실화면 범위(해결, 2026-11-11)**: 대시보드(히어로)·Historian 추세·상태감시 파형/FFT·알람·배치도를 발표용 로컬 인스턴스의 실제 화면으로 넣었다(7-1절). 값은 소개용 예시 데이터이고 캡션에 그렇게 적었다.
+- 배치도 위젯은 구역·엔티티 이름 대신 코드(PUMP-ROOM, P-101 등)를 라벨로 그린다(제품 동작). 그래서 코드를 읽기 쉬운 영문 약어로 정했다.
+- 미디어 섹션은 실 카메라가 없어 기존 Edge 콘솔 카메라 시험 화면을 그대로 둔다(라이브 영상 캡처 없음).
+- 상태감시 진단 목록은 합성 파형이라 "전동체 결함"도 함께 판정됐다. 페이지에는 진단 목록이 아니라 파형·FFT·결함 주파수 표시만 잘라 넣었다.
 - 카탈로그 PDF 없음 → 다운로드 버튼 숨김. 소개서가 준비되면 CMS "제품 카탈로그(PDF)"에 올리면 된다(자료실 항목도 함께 갱신).
 - 표시 순서는 3(AssetPulse 다음). Janus 를 앞에 두려면 CMS 에서 순서만 바꾸면 된다.
 - Taste 검사기 잔여(AssetPulse 와 동일, 사이트 공통): 헤더/푸터 구분선(hairline), 헤더 드롭다운의 reduced-motion 숨김, 모션 없음(사이트 전체가 모션을 쓰지 않음), 헤더 글자 대비/11px 글자, 실사진·영상 없음(이 제품의 그림은 실제 UI 화면), 카드형 블록 5줄 경고.
@@ -175,7 +193,7 @@ Janus System(야누스 시스템)은 수집·Edge·Historian·Studio·상태감�
 | `src/_includes/product-card-media.njk` | 제품 카드 이미지 영역(목록·홈 공통, cover/contain) |
 | `src/_data/janus.json` | 전용 템플릿 고정 문구·이미지 alt/캡션/크기 |
 | `src/products/janus-system.md` | Janus CMS 제품 문서 |
-| `public/images/janus/*.webp` | 실제 Janus 화면 |
+| `public/images/janus/*.webp` | 실제 Janus 화면(12장 + 800w 변형) |
 | `public/images/uploads/janus-system-logo.webp` | 공식 로고(대표 이미지) |
 | `admin/config.yml` | 템플릿 선택지 `janus`, `image_fit` 필드 |
 | `docs/PRODUCT-CMS-BLOCK-MODEL-PROPOSAL.md` | 블록형 제품 콘텐츠 제안(이번 범위 아님) |
